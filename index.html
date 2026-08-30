@@ -836,7 +836,84 @@ tr:last-child td {
     }
 }
 
-    </style>
+
+/* ---------- FLEX VS GRID LIVE COMPARISON ---------- */
+.compare-layouts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0 30px;
+}
+
+.layout-example {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+}
+
+.layout-example h3 {
+    margin: 0 0 18px;
+    font-size: 20px;
+}
+
+.layout-kicker {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.flex-box-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.flex-box-demo .sample-box {
+    flex: 1 1 110px;
+}
+
+.grid-box-demo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.sample-box {
+    min-height: 72px;
+    display: grid;
+    place-items: center;
+    padding: 14px;
+    border: 1px solid #cfc5ba;
+    border-radius: 7px;
+    background: #f4eee7;
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+    .compare-layouts {
+        grid-template-columns: 1fr;
+    }
+
+    .flex-box-demo {
+        flex-direction: column;
+    }
+
+    .flex-box-demo .sample-box {
+        flex-basis: auto;
+    }
+
+    .grid-box-demo {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
 </head>
 <body>
 
@@ -856,6 +933,7 @@ tr:last-child td {
         <a href="#page-width">Page width</a>
         <a href="#full-background">Full-width background</a>
         <a href="#flex-grid">Flex vs Grid</a>
+        <a href="#flex-grid-live">Flex vs Grid live</a>
         <a href="#hero">Hero</a>
         <a href="#cards">Two cards</a>
         <a href="#work-row">Image + text</a>
@@ -881,6 +959,7 @@ tr:last-child td {
         <a href="#page-width">Centered page width</a>
         <a href="#full-background">Full-width background</a>
         <a href="#flex-grid">Flex vs Grid</a>
+        <a href="#flex-grid-live">Flex vs Grid live</a>
         <a href="#hero">Text left + image right</a>
         <a href="#cards">Two cards</a>
         <a href="#work-row">Image + text row</a>
@@ -901,7 +980,7 @@ tr:last-child td {
             <p class="eyebrow">HTML + CSS reference</p>
             <h1>Build the layout by understanding who controls what.</h1>
             <p class="lead">
-                This page explains the same portfolio patterns you can see in the browser:
+                This page explains reusable layout patterns you can inspect directly in the browser:
                 centered content, full-width colored sections, text beside an image, two cards,
                 project rows, semantic HTML, class placement and mobile transformations.
                 Open DevTools and inspect this page — the page itself uses these rules.
@@ -969,12 +1048,12 @@ tr:last-child td {
 
             <div class="table-wrap">
                 <table>
-                    <thead><tr><th>Element</th><th>Use it when…</th><th>Portfolio example</th></tr></thead>
+                    <thead><tr><th>Element</th><th>Use it when…</th><th>Example</th></tr></thead>
                     <tbody>
                         <tr><td><code>header</code></td><td>It is the top/site header.</td><td>Navigation bar</td></tr>
-                        <tr><td><code>nav</code></td><td>It contains navigation links.</td><td>Works / Blog / Contact</td></tr>
+                        <tr><td><code>nav</code></td><td>It contains navigation links.</td><td>Archive / Notes / About</td></tr>
                         <tr><td><code>main</code></td><td>It wraps the unique content of the page.</td><td>Everything between header and footer</td></tr>
-                        <tr><td><code>section</code></td><td>It groups a topic/area and usually has a heading.</td><td>Hero, Recent posts, Featured works</td></tr>
+                        <tr><td><code>section</code></td><td>It groups a topic/area and usually has a heading.</td><td>Hero, Selected Notes, Visual Archive</td></tr>
                         <tr><td><code>article</code></td><td>The item could make sense on its own.</td><td>One blog card or one work/project</td></tr>
                         <tr><td><code>div</code></td><td>You only need a layout/styling wrapper.</td><td><code>.page-width</code>, <code>.work-copy</code>, metadata wrapper</td></tr>
                     </tbody>
@@ -1020,7 +1099,7 @@ tr:last-child td {
   <div class="code-label">HTML</div>
   <pre><code>&lt;section class=&quot;hero page-width&quot;&gt;
     &lt;div class=&quot;hero-copy&quot;&gt;
-        &lt;h1&gt;Hi, I am John&lt;/h1&gt;
+        &lt;h1&gt;Aster Studio&lt;/h1&gt;
         &lt;p&gt;...&lt;/p&gt;
     &lt;/div&gt;
 
@@ -1131,7 +1210,7 @@ tr:last-child td {
   <div class="code-label">HTML</div>
   <pre><code>&lt;section class=&quot;recent-posts&quot;&gt;
     &lt;div class=&quot;page-width&quot;&gt;
-        &lt;h2&gt;Recent posts&lt;/h2&gt;
+        &lt;h2&gt;Selected Notes&lt;/h2&gt;
         ...
     &lt;/div&gt;
 &lt;/section&gt;</code></pre>
@@ -1200,7 +1279,93 @@ tr:last-child td {
 
         </section>
 
-        <section class="guide-section" id="hero">
+        
+        <section class="guide-section" id="flex-grid-live">
+            <h2>Flex vs Grid — the same boxes, different logic</h2>
+            <p>
+                Both can place boxes next to each other. The difference is mainly <strong>how you think about the layout</strong>:
+                Flex is usually one-dimensional — a row or a column. Grid is two-dimensional — rows and columns.
+            </p>
+
+            <div class="compare-layouts">
+                <article class="layout-example">
+                    <p class="layout-kicker">FLEX</p>
+                    <h3>Good for a row that can wrap</h3>
+
+                    <div class="flex-box-demo">
+                        <div class="sample-box">Alpha</div>
+                        <div class="sample-box">Beta</div>
+                        <div class="sample-box">Gamma</div>
+                        <div class="sample-box">Delta</div>
+                    </div>
+
+                    <p class="small-note">
+                        Flex thinks mainly in one direction. Here the children sit in a row and can wrap when there is not enough space.
+                    </p>
+                </article>
+
+                <article class="layout-example">
+                    <p class="layout-kicker">GRID</p>
+                    <h3>Good for controlled columns</h3>
+
+                    <div class="grid-box-demo">
+                        <div class="sample-box">Alpha</div>
+                        <div class="sample-box">Beta</div>
+                        <div class="sample-box">Gamma</div>
+                        <div class="sample-box">Delta</div>
+                    </div>
+
+                    <p class="small-note">
+                        Grid explicitly defines the columns. On narrow screens the media query changes two columns into one.
+                    </p>
+                </article>
+            </div>
+
+
+            <div class="code-block">
+              <div class="code-label">FLEX</div>
+              <pre><code>.flex-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.flex-boxes .box {
+    flex: 1 1 180px;
+}
+
+/* On small screens the items naturally wrap.
+   You can also force a column if you want: */
+
+@media (max-width: 700px) {
+    .flex-boxes {
+        flex-direction: column;
+    }
+}</code></pre>
+            </div>
+
+            <div class="code-block">
+              <div class="code-label">GRID</div>
+              <pre><code>.grid-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 700px) {
+    .grid-boxes {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+            </div>
+
+            <div class="rule">
+                <strong>Fast decision</strong>
+                Use Flex when you mainly think “put these items in a row/column.” Use Grid when you think “I need these exact columns.”
+            </div>
+        </section>
+
+<section class="guide-section" id="hero">
             <h2>Text on the left, image on the right</h2>
             <p>The parent controls the two-column layout. The image class controls the image dimensions. The text wrapper mainly gives you a clean selector for its heading and paragraph.</p>
 
@@ -1209,11 +1374,11 @@ tr:last-child td {
                 <div class="demo-body">
                     <div class="portfolio-hero-demo">
                         <div>
-                            <h3>Hi, I am John,<br>Creative Technologist</h3>
+                            <h3>Aster Studio<br>Dolor Sit Amet</h3>
                             <p>Text fills the flexible column. The image keeps a predictable size.</p>
-                            <a class="demo-button" href="#hero">Download Resume</a>
+                            <a class="demo-button" href="#hero">Explore</a>
                         </div>
-                        <img src="assets/avatar.png" alt="Example portrait">
+                        <img src="assets/avatar.png" alt="Abstract portrait example">
                     </div>
                 </div>
             </div>
@@ -1223,9 +1388,9 @@ tr:last-child td {
   <div class="code-label">HTML</div>
   <pre><code>&lt;section class=&quot;hero page-width&quot;&gt;
     &lt;div class=&quot;hero-copy&quot;&gt;
-        &lt;h1&gt;Hi, I am John&lt;/h1&gt;
+        &lt;h1&gt;Aster Studio&lt;/h1&gt;
         &lt;p&gt;...&lt;/p&gt;
-        &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Download Resume&lt;/a&gt;
+        &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Explore&lt;/a&gt;
     &lt;/div&gt;
 
     &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.png&quot; alt=&quot;Portrait&quot;&gt;
@@ -1276,7 +1441,7 @@ tr:last-child td {
 </div>
 
 
-            <p>You are allowed to change Grid to Flex at the breakpoint. The desktop layout is horizontal; the mobile layout is one vertical column. <code class="inline-code">order: -1</code> moves the image above the text visually.</p>
+            <p>You are allowed to change Grid to Flex at the breakpoint. The wide layout is horizontal; the narrow layout becomes one vertical column. <code class="inline-code">order: -1</code> moves the image above the text visually.</p>
         </section>
 
         <section class="guide-section" id="cards">
@@ -1287,11 +1452,11 @@ tr:last-child td {
                 <p class="demo-title">Two equal columns</p>
                 <div class="cards-demo">
                     <article class="mini-card">
-                        <h4>Making a design system</h4>
+                        <h4>Lorem Ipsum</h4>
                         <p>Card content. The grid parent controls where this card sits.</p>
                     </article>
                     <article class="mini-card">
-                        <h4>Creating pixel perfect icons</h4>
+                        <h4>Dolor Sit Amet</h4>
                         <p>Both cards receive exactly one fraction of the available width.</p>
                     </article>
                 </div>
@@ -1351,12 +1516,12 @@ tr:last-child td {
                 <p class="demo-title">Live work row</p>
                 <div class="demo-body">
                     <article class="work-demo">
-                        <img src="assets/fs1.png" alt="Dashboard project example">
+                        <img src="assets/fs1.png" alt="Interface project example">
                         <div>
-                            <h3>Designing Dashboards</h3>
+                            <h3>Lorem Archivepace</h3>
                             <div class="meta-demo">
                                 <span class="year-demo">2026</span>
-                                <span class="category-demo">Dashboard</span>
+                                <span class="category-demo">Interface</span>
                             </div>
                             <p>The image has a fixed desktop box. The text column uses the rest of the row.</p>
                         </div>
@@ -1371,14 +1536,14 @@ tr:last-child td {
     &lt;img src=&quot;project.jpg&quot; alt=&quot;Project&quot;&gt;
 
     &lt;div class=&quot;work-copy&quot;&gt;
-        &lt;h3&gt;Designing Dashboards&lt;/h3&gt;
+        &lt;h3&gt;Lorem Archivepace&lt;/h3&gt;
 
         &lt;div class=&quot;work-meta&quot;&gt;
             &lt;span class=&quot;year&quot;&gt;2026&lt;/span&gt;
-            &lt;span class=&quot;category&quot;&gt;Dashboard&lt;/span&gt;
+            &lt;span class=&quot;category&quot;&gt;Interface&lt;/span&gt;
         &lt;/div&gt;
 
-        &lt;p&gt;Description...&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
     &lt;/div&gt;
 &lt;/article&gt;</code></pre>
 </div>
@@ -1441,9 +1606,9 @@ tr:last-child td {
   <pre><code>&lt;header class=&quot;site-header&quot;&gt;
     &lt;div class=&quot;header-inner&quot;&gt;
         &lt;nav class=&quot;desktop-nav&quot;&gt;
-            &lt;a href=&quot;#&quot;&gt;Works&lt;/a&gt;
-            &lt;a href=&quot;#&quot;&gt;Blog&lt;/a&gt;
-            &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Archive&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Notes&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;
         &lt;/nav&gt;
 
         &lt;button class=&quot;menu-button&quot;&gt;Menu&lt;/button&gt;
@@ -1717,7 +1882,7 @@ padding: 10px 20px 30px 40px;
                 </table>
             </div>
 
-            <p>A breakpoint like <code class="inline-code">700px</code> is not magic. Choose the point where your layout stops fitting comfortably. For this portfolio-style layout, 700px is a simple useful breakpoint.</p>
+            <p>A breakpoint like <code class="inline-code">700px</code> is not magic. Choose the point where your layout stops fitting comfortably. For these examples, 700px is a simple demonstration breakpoint.</p>
         </section>
 
         <section class="guide-section" id="order">
@@ -1897,9 +2062,9 @@ padding: 10px 20px 30px 40px;
 &lt;header&gt;
     &lt;div class=&quot;header-inner&quot;&gt;
         &lt;nav&gt;
-            &lt;a href=&quot;#&quot;&gt;Works&lt;/a&gt;
-            &lt;a href=&quot;#&quot;&gt;Blog&lt;/a&gt;
-            &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Archive&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Notes&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;
         &lt;/nav&gt;
     &lt;/div&gt;
 &lt;/header&gt;
@@ -1907,9 +2072,9 @@ padding: 10px 20px 30px 40px;
 &lt;main&gt;
     &lt;section class=&quot;hero container&quot;&gt;
         &lt;div class=&quot;hero-copy&quot;&gt;
-            &lt;h1&gt;Hi, I am John&lt;/h1&gt;
-            &lt;p&gt;Short introduction...&lt;/p&gt;
-            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Download Resume&lt;/a&gt;
+            &lt;h1&gt;Aster Studio&lt;/h1&gt;
+            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Explore&lt;/a&gt;
         &lt;/div&gt;
 
         &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.jpg&quot; alt=&quot;Portrait&quot;&gt;
@@ -1917,24 +2082,24 @@ padding: 10px 20px 30px 40px;
 
     &lt;section class=&quot;colored-section&quot;&gt;
         &lt;div class=&quot;container&quot;&gt;
-            &lt;h2&gt;Recent posts&lt;/h2&gt;
+            &lt;h2&gt;Selected Notes&lt;/h2&gt;
 
             &lt;div class=&quot;cards&quot;&gt;
-                &lt;article class=&quot;card&quot;&gt;First post&lt;/article&gt;
-                &lt;article class=&quot;card&quot;&gt;Second post&lt;/article&gt;
+                &lt;article class=&quot;card&quot;&gt;Lorem ipsum&lt;/article&gt;
+                &lt;article class=&quot;card&quot;&gt;Dolor sit amet&lt;/article&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/section&gt;
 
     &lt;section class=&quot;container&quot;&gt;
-        &lt;h2&gt;Featured works&lt;/h2&gt;
+        &lt;h2&gt;Visual Archive&lt;/h2&gt;
 
         &lt;article class=&quot;work&quot;&gt;
             &lt;img src=&quot;project.jpg&quot; alt=&quot;Project&quot;&gt;
 
             &lt;div&gt;
-                &lt;h3&gt;Project title&lt;/h3&gt;
-                &lt;p&gt;Description...&lt;/p&gt;
+                &lt;h3&gt;Amet Consectetur&lt;/h3&gt;
+                &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
             &lt;/div&gt;
         &lt;/article&gt;
     &lt;/section&gt;

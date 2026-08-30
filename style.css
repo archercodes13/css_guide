@@ -827,3 +827,80 @@ tr:last-child td {
         padding-inline: 16px;
     }
 }
+
+
+/* ---------- FLEX VS GRID LIVE COMPARISON ---------- */
+.compare-layouts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0 30px;
+}
+
+.layout-example {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+}
+
+.layout-example h3 {
+    margin: 0 0 18px;
+    font-size: 20px;
+}
+
+.layout-kicker {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.flex-box-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.flex-box-demo .sample-box {
+    flex: 1 1 110px;
+}
+
+.grid-box-demo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.sample-box {
+    min-height: 72px;
+    display: grid;
+    place-items: center;
+    padding: 14px;
+    border: 1px solid #cfc5ba;
+    border-radius: 7px;
+    background: #f4eee7;
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+    .compare-layouts {
+        grid-template-columns: 1fr;
+    }
+
+    .flex-box-demo {
+        flex-direction: column;
+    }
+
+    .flex-box-demo .sample-box {
+        flex-basis: auto;
+    }
+
+    .grid-box-demo {
+        grid-template-columns: 1fr;
+    }
+}
