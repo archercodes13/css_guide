@@ -1,22 +1,17 @@
-# Learn CSS — Layout & Responsive Design
+# CSS Field Notes
 
-A static CSS learning site for GitHub Pages.
+A static HTML/CSS learning reference for GitHub Pages.
 
-The examples are intentionally generic:
-- random placeholder copy
-- CSS-only abstract visuals
-- independent colors
-- no original portfolio photos or screenshots
+This version uses:
+- a muted sage / sand / charcoal palette
+- editorial documentation styling
+- generic example copy
+- geometric CSS-only demos
+- no original project photos, screenshots, names or project-specific colors
 
-## Files
+Files:
+- `index.html` — complete self-contained website
+- `learn-css.html` — same page under a descriptive filename
+- `style.css` — stylesheet separately for studying
 
-- `index.html` — complete styled website with embedded CSS
-- `learn-css.html` — same full page under a descriptive filename
-- `style.css` — the stylesheet separately for studying in DevTools/editor
-
-## GitHub Pages
-
-Upload the files to a repository root and enable:
-**Settings → Pages → Deploy from a branch → main → / (root)**
-
-No framework, npm, PHP, database, images, or build step is required.
+Upload `index.html` to a repository root and enable GitHub Pages.
