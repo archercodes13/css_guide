@@ -1279,171 +1279,129 @@ td {
 }
 
 
-/* ---------- CLASS / PARENT / CHILD MAP ---------- */
-.class-layout-map {
-    display: grid;
-    grid-template-columns: 1.25fr .75fr;
-    gap: 18px;
-    margin: 26px 0 32px;
+@media (max-width: 700px) {
+    .split-demo .shape-visual {
+        order: -1;
+    }
 }
 
-.map-panel {
-    min-width: 0;
+
+/* ---------- SIMPLE PARENT / CHILD MAP ---------- */
+.simple-class-map {
+    margin: 26px 0 18px;
+    padding: 22px;
     border: 1px solid var(--line);
     background: var(--surface);
 }
 
-.map-heading {
-    padding: 12px 14px;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    border-bottom: 1px solid var(--line);
-    background: #e8e3d8;
-    font-size: 13px;
+.simple-parent {
+    padding: 16px;
+    border: 2px solid #738678;
+    background: #eef2ec;
 }
 
-.map-heading span {
-    color: var(--muted);
-}
-
-.map-parent {
-    margin: 16px;
-    padding: 14px;
-    border: 2px solid #75897a;
-    background: #f1f4ee;
-}
-
-.class-tag {
+.simple-label {
     width: fit-content;
-    max-width: 100%;
-    margin-bottom: 10px;
-    padding: 5px 8px;
-    border: 1px solid #a9b4aa;
-    background: #fff;
+    margin-bottom: 12px;
+    padding: 6px 9px;
+    border: 1px solid;
     font-family: "SFMono-Regular", Consolas, monospace;
     font-size: 12px;
     font-weight: 700;
 }
 
-.class-tag span {
-    margin-left: 6px;
-    color: #738078;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 500;
+.parent-label,
+.parent-color {
+    border-color: #738678;
+    background: #dce6dd;
+    color: #33473a;
 }
 
-.parent-tag {
-    border-color: #75897a;
-    background: #dfe7df;
+.copy-label,
+.copy-color {
+    border-color: #a98d6d;
+    background: #eee3d3;
+    color: #5e4a35;
 }
 
-.parent-properties,
-.child-properties {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+.visual-label,
+.visual-color {
+    border-color: #80708f;
+    background: #e4ddeb;
+    color: #4f435a;
 }
 
-.parent-properties {
-    margin-bottom: 14px;
-}
-
-.parent-properties code,
-.child-properties code {
-    padding: 3px 6px;
-    border: 1px solid #d1d6ce;
-    background: #f8faf6;
-    font-size: 10px;
-}
-
-.map-desktop-layout {
+.simple-children {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 12px;
-    align-items: stretch;
+    gap: 14px;
 }
 
-.map-mobile-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-}
-
-.map-child {
-    min-width: 0;
+.simple-child {
+    min-height: 150px;
     padding: 14px;
-    border: 1px solid #bbbdb5;
+    border: 1px solid #c7c0b6;
     background: #fff;
 }
 
-.map-child strong {
+.simple-child > span {
     display: block;
-    margin-bottom: 4px;
+    margin-top: 28px;
     font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .06em;
 }
 
-.map-child small {
-    display: block;
-    margin-bottom: 12px;
-    color: var(--muted);
-}
-
-.abstract-map-visual {
-    min-height: 104px;
-    margin: 8px 0 12px;
-    padding: 12px;
+.simple-visual-shape {
+    min-height: 90px;
+    padding: 10px;
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 7px;
-    background: #c8d2c8;
+    background: #d4d9d2;
 }
 
-.abstract-map-visual i {
+.simple-visual-shape i {
     display: block;
-    background: rgba(255,255,255,.62);
+    background: #f5f3ed;
 }
 
-.abstract-map-visual i:first-child {
+.simple-visual-shape i:first-child {
     grid-row: 1 / 3;
-    background: #87998a;
+    background: #95a397;
 }
 
-.abstract-map-visual.compact {
-    min-height: 86px;
+.class-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 26px;
 }
 
-.mobile-map-panel .visual-child {
-    order: -1;
-}
-
-@media (max-width: 820px) {
-    .class-layout-map {
-        grid-template-columns: 1fr;
-    }
+.legend-item {
+    padding: 6px 9px;
+    border: 1px solid;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 11px;
+    font-weight: 700;
 }
 
 @media (max-width: 700px) {
-    .map-desktop-layout {
+    .simple-children {
         grid-template-columns: 1fr;
     }
 
-    .map-desktop-layout .visual-child {
+    .simple-child.visual-box {
         order: -1;
     }
 
-    .map-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 3px;
+    .simple-child {
+        min-height: auto;
     }
-}
 
-
-@media (max-width: 700px) {
-    .split-demo .shape-visual {
-        order: -1;
+    .simple-visual-shape {
+        min-height: 110px;
     }
 }
 
@@ -1524,90 +1482,44 @@ td {
         <section class="guide-section" id="mental-model">
             <h2>Layout logic</h2>
             <p>
-                Start by identifying the <strong>parent</strong> and its direct <strong>children</strong>.
-                The parent controls how the children are arranged. Each child controls its own size, content and appearance.
+                First identify the <strong>parent</strong> and its direct <strong>children</strong>.
+                The parent controls how the children are arranged. Each child controls only itself.
             </p>
 
-            <div class="class-layout-map">
-                <div class="map-panel">
-                    <div class="map-heading">
-                        <strong>Large viewport</strong>
-                        <span>two columns</span>
-                    </div>
+            <div class="simple-class-map">
+                <div class="simple-parent">
+                    <div class="simple-label parent-label">.split-layout</div>
 
-                    <div class="map-parent">
-                        <div class="class-tag parent-tag">.split-layout <span>parent</span></div>
-                        <div class="parent-properties">
-                            <code>display: grid</code>
-                            <code>grid-template-columns</code>
-                            <code>gap</code>
-                            <code>align-items</code>
+                    <div class="simple-children">
+                        <div class="simple-child copy-box">
+                            <div class="simple-label copy-label">.split-copy</div>
+                            <span>CONTENT</span>
                         </div>
 
-                        <div class="map-desktop-layout">
-                            <div class="map-child copy-child">
-                                <div class="class-tag">.split-copy <span>child</span></div>
-                                <strong>CONTENT</strong>
-                                <small>heading + paragraph</small>
-                                <div class="child-properties">
-                                    <code>font-size</code>
-                                    <code>color</code>
-                                    <code>line-height</code>
-                                </div>
-                            </div>
-
-                            <div class="map-child visual-child">
-                                <div class="class-tag">.split-visual <span>child</span></div>
-                                <div class="abstract-map-visual">
-                                    <i></i><i></i><i></i>
-                                </div>
-                                <div class="child-properties">
-                                    <code>min-height</code>
-                                    <code>background</code>
-                                    <code>border-radius</code>
-                                </div>
+                        <div class="simple-child visual-box">
+                            <div class="simple-label visual-label">.split-visual</div>
+                            <div class="simple-visual-shape">
+                                <i></i>
+                                <i></i>
+                                <i></i>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="map-panel mobile-map-panel">
-                    <div class="map-heading">
-                        <strong>Small viewport</strong>
-                        <span>visual moves above content</span>
-                    </div>
-
-                    <div class="map-parent">
-                        <div class="class-tag parent-tag">.split-layout <span>same parent</span></div>
-                        <div class="parent-properties">
-                            <code>grid-template-columns: 1fr</code>
-                        </div>
-
-                        <div class="map-mobile-layout">
-                            <div class="map-child visual-child">
-                                <div class="class-tag">.split-visual <span>order: -1</span></div>
-                                <div class="abstract-map-visual compact">
-                                    <i></i><i></i><i></i>
-                                </div>
-                            </div>
-
-                            <div class="map-child copy-child">
-                                <div class="class-tag">.split-copy <span>same HTML</span></div>
-                                <strong>CONTENT</strong>
-                                <small>now below the visual</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="class-legend">
+                <span class="legend-item parent-color">.split-layout = parent</span>
+                <span class="legend-item copy-color">.split-copy = text child</span>
+                <span class="legend-item visual-color">.split-visual = visual child</span>
             </div>
 
             <div class="rule">
                 <strong>Core rule</strong>
-                If a CSS property changes the relationship between several children, put it on their parent.
-                If it changes only one element, put it on that child.
+                Layout properties usually go on the parent. Properties that change only one element go on that child.
             </div>
 
-            <h3>The exact HTML behind the diagram</h3>
+            <h3>HTML</h3>
 
             <div class="code-block">
                 <div class="code-label">HTML</div>
@@ -1621,10 +1533,10 @@ td {
 &lt;/section&gt;</code></pre>
             </div>
 
-            <h3>Large viewport: parent creates the two-column layout</h3>
+            <h3>CSS for the large layout</h3>
 
             <div class="code-block">
-                <div class="code-label">CSS — large viewport</div>
+                <div class="code-label">CSS</div>
                 <pre><code>.split-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -1649,10 +1561,10 @@ td {
 }</code></pre>
             </div>
 
-            <h3>Small viewport: one column + visual moved to the top</h3>
+            <h3>CSS for mobile</h3>
 
             <div class="code-block">
-                <div class="code-label">CSS — responsive override</div>
+                <div class="code-label">MEDIA QUERY</div>
                 <pre><code>@media (max-width: 700px) {
     .split-layout {
         grid-template-columns: 1fr;
@@ -1667,61 +1579,10 @@ td {
             </div>
 
             <p>
-                The HTML does not change. The media query changes the parent from two columns to one column,
-                and <code class="inline-code">order: -1</code> moves only <code class="inline-code">.split-visual</code>
-                above <code class="inline-code">.split-copy</code>.
+                On mobile, <code class="inline-code">.split-layout</code> becomes one column.
+                <code class="inline-code">.split-visual</code> gets <code class="inline-code">order: -1</code>,
+                so the visual block appears above the text.
             </p>
-
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>You want to…</th>
-                            <th>Put it on…</th>
-                            <th>Typical CSS</th>
-                            <th>Why</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Place two children beside each other</td>
-                            <td>Parent</td>
-                            <td><code>display: grid/flex</code></td>
-                            <td>The parent controls their relationship.</td>
-                        </tr>
-                        <tr>
-                            <td>Define two specific columns</td>
-                            <td>Grid parent</td>
-                            <td><code>grid-template-columns</code></td>
-                            <td>Columns describe the layout, not either child.</td>
-                        </tr>
-                        <tr>
-                            <td>Create space between children</td>
-                            <td>Parent</td>
-                            <td><code>gap</code></td>
-                            <td>The spacing is between siblings.</td>
-                        </tr>
-                        <tr>
-                            <td>Move one child above another on mobile</td>
-                            <td>That child</td>
-                            <td><code>order: -1</code></td>
-                            <td>Only that item's visual position changes.</td>
-                        </tr>
-                        <tr>
-                            <td>Change visual block height</td>
-                            <td>Visual child</td>
-                            <td><code>min-height</code></td>
-                            <td>It affects only that element.</td>
-                        </tr>
-                        <tr>
-                            <td>Center the whole component on the page</td>
-                            <td>Container / wrapper</td>
-                            <td><code>width, max-width, margin</code></td>
-                            <td>Page width is a separate responsibility.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </section>
 
 <section class="guide-section" id="html-structure">
