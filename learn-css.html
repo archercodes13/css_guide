@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A visual CSS layout and responsive design reference for building portfolio-style pages with HTML and CSS.">
+    <title>Learn CSS — Layout & Responsive Design</title>
+    <style>
+
+/* =========================================================
+   LEARN CSS — LAYOUT & RESPONSIVE DESIGN
+   Open this file in DevTools. It is intentionally organized
+   in the same order as the page.
+   ========================================================= */
+
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+    --ink: #171717;
+    --muted: #6f6962;
+    --paper: #fbf8f4;
+    --surface: #ffffff;
+    --soft: #f1ebe4;
+    --line: #dfd8cf;
+    --accent: #d95f82;
+    --accent-soft: #f7e2e8;
+    --blue-soft: #e8f4f7;
+    --blue: #2f6775;
+    --code-bg: #181818;
+    --code-text: #f7f3ed;
+    --max-guide: 860px;
+}
+
+/* ---------- SAFE DEFAULTS ---------- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+code,
+pre {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+/* ---------- PAGE SHELL ---------- */
+.site-header {
+    border-bottom: 1px solid var(--line);
+    background: rgba(251, 248, 244, 0.96);
+}
+
+.header-inner {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.brand {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+}
+
+.header-note {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.mobile-toc {
+    display: none;
+}
+
+.page-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 52px 0 90px;
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 68px;
+    align-items: start;
+}
+
+.sidebar {
+    position: sticky;
+    top: 24px;
+}
+
+.sidebar-title {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.sidebar a {
+    display: block;
+    padding: 4px 0;
+    color: #59544e;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: var(--accent);
+}
+
+.guide {
+    min-width: 0;
+    max-width: var(--max-guide);
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+.guide-intro {
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+}
+
+h1 {
+    max-width: 780px;
+    margin: 0 0 22px;
+    font-size: clamp(42px, 7vw, 72px);
+}
+
+.lead {
+    max-width: 740px;
+    margin: 0;
+    color: #4f4a45;
+    font-size: 20px;
+    line-height: 1.55;
+}
+
+.guide-section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 24px;
+}
+
+.guide-section > h2 {
+    margin: 0 0 14px;
+    font-size: 36px;
+}
+
+.guide-section > h3 {
+    margin: 34px 0 12px;
+    font-size: 24px;
+}
+
+.guide-section > p,
+.guide-section > ul,
+.guide-section > ol {
+    max-width: 760px;
+}
+
+.guide-section p {
+    margin-top: 0;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.rule {
+    margin: 24px 0;
+    padding: 17px 20px;
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
+}
+
+.rule strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.small-note {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------- CODE ---------- */
+.code-block {
+    margin: 20px 0 28px;
+    border: 1px solid #2d2d2d;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--code-bg);
+}
+
+.code-label {
+    padding: 8px 14px;
+    border-bottom: 1px solid #343434;
+    color: #bdb6ad;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+pre {
+    margin: 0;
+    padding: 18px;
+    overflow-x: auto;
+    color: var(--code-text);
+    font-size: 13px;
+    line-height: 1.65;
+    tab-size: 4;
+}
+
+.inline-code {
+    padding: 2px 5px;
+    border: 1px solid #e2d8cc;
+    border-radius: 4px;
+    background: #f4ede5;
+    font-size: 0.9em;
+}
+
+/* ---------- TABLES ---------- */
+.table-wrap {
+    margin: 22px 0 30px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th,
+td {
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #f2ece5;
+    font-size: 13px;
+}
+
+td {
+    font-size: 14px;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+/* ---------- LIVE VISUAL EXAMPLES ---------- */
+.demo {
+    margin: 24px 0 32px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.demo-title {
+    margin: 0;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    background: #f5f0ea;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.demo-body {
+    padding: 22px;
+}
+
+.demo-caption {
+    margin: 14px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Parent / child */
+.parent-demo {
+    padding: 18px;
+    border: 2px solid #b98c98;
+    background: #fff7f9;
+}
+
+.parent-demo > span {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.parent-children {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 16px;
+}
+
+.child-demo {
+    min-height: 90px;
+    padding: 15px;
+    border: 1px solid #c9c1b8;
+    background: white;
+}
+
+/* Full width strip */
+.full-strip-demo {
+    margin-inline: -22px;
+    padding: 24px 22px;
+    background: var(--blue-soft);
+}
+
+.inner-width-demo {
+    width: 82%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 18px;
+    border: 1px dashed var(--blue);
+    background: #fff;
+}
+
+.width-bars {
+    display: grid;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.width-bar {
+    height: 12px;
+    border-radius: 20px;
+    background: #d9d1c7;
+}
+
+.width-bar.long { width: 100%; }
+.width-bar.medium { width: 78%; }
+.width-bar.short { width: 48%; }
+
+/* Hero live demo */
+.portfolio-hero-demo {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 34px;
+    align-items: center;
+}
+
+.portfolio-hero-demo h3 {
+    margin: 0 0 10px;
+    font-size: 28px;
+}
+
+.portfolio-hero-demo p {
+    margin: 0 0 16px;
+    color: var(--muted);
+}
+
+.demo-button {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 3px;
+    background: #ff6464;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.portfolio-hero-demo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Cards */
+.cards-demo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 22px;
+    background: #eaf5f8;
+}
+
+.mini-card {
+    padding: 19px;
+    background: white;
+    border-radius: 4px;
+}
+
+.mini-card h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.mini-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Work row */
+.work-demo {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.work-demo img {
+    width: 210px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.work-demo h3 {
+    margin: -4px 0 8px;
+    font-size: 24px;
+}
+
+.work-demo p {
+    margin: 10px 0 0;
+    color: var(--muted);
+}
+
+.meta-demo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.year-demo {
+    padding: 1px 9px;
+    border-radius: 20px;
+    background: #142850;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.category-demo {
+    color: #8695a4;
+    font-size: 14px;
+}
+
+/* Side-by-side comparison */
+.compare {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 22px 0 30px;
+}
+
+.compare-panel {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: white;
+}
+
+.compare-panel h4 {
+    margin: 0 0 14px;
+    font-size: 15px;
+}
+
+.phone-frame {
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 14px;
+    border: 7px solid #262626;
+    border-radius: 22px;
+    background: white;
+}
+
+.phone-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+}
+
+.phone-hero img {
+    order: -1;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.phone-hero h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.phone-hero p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.phone-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+}
+
+.phone-card {
+    padding: 12px;
+    background: #eaf5f8;
+    font-size: 12px;
+}
+
+.phone-work img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.phone-work h4 {
+    margin-bottom: 6px;
+}
+
+/* Semantic HTML */
+.semantic-demo {
+    display: grid;
+    gap: 10px;
+}
+
+.semantic-box {
+    padding: 12px;
+    border: 1px solid #cfc6bb;
+    background: #fff;
+}
+
+.semantic-box strong {
+    font-size: 13px;
+}
+
+.semantic-main {
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+    background: #f7f0e8;
+}
+
+.semantic-section {
+    padding: 10px;
+    border: 1px dashed #b79685;
+    background: #fff;
+}
+
+.semantic-articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.semantic-articles article {
+    padding: 9px;
+    background: #f5e4e9;
+    font-size: 12px;
+}
+
+/* Class stacking */
+.stack-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 16px 0;
+}
+
+.stack-pill {
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: var(--soft);
+    font-size: 13px;
+}
+
+.stack-result {
+    padding: 18px;
+    border: 1px solid var(--line);
+    background: white;
+}
+
+/* Property list */
+.property-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.property-group {
+    padding: 18px;
+    border: 1px solid var(--line);
+    background: white;
+}
+
+.property-group h3 {
+    margin: 0 0 13px;
+    font-size: 18px;
+}
+
+.property-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.property-list li {
+    padding: 7px 0;
+    border-bottom: 1px solid #eee7df;
+    font-size: 14px;
+}
+
+.property-list li:last-child {
+    border-bottom: 0;
+}
+
+.property-list code {
+    font-weight: 700;
+}
+
+/* Decision cards */
+.decision-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 22px 0;
+}
+
+.decision {
+    padding: 17px;
+    border: 1px solid var(--line);
+    background: white;
+}
+
+.decision strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Footer */
+.site-footer {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 30px 0 50px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ---------- RESPONSIVE GUIDE PAGE ----------
+   Same principle as the portfolio:
+   desktop CSS first, mobile only overrides what changes.
+   ------------------------------------------------------ */
+@media (max-width: 900px) {
+    .page-shell {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .mobile-toc {
+        display: block;
+        width: min(1180px, calc(100% - 40px));
+        margin: 20px auto 0;
+        border: 1px solid var(--line);
+        background: white;
+    }
+
+    .mobile-toc summary {
+        padding: 12px 15px;
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+    .mobile-toc nav {
+        padding: 0 15px 14px;
+        columns: 2;
+    }
+
+    .mobile-toc a {
+        display: block;
+        padding: 4px 0;
+        font-size: 13px;
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .header-inner {
+        padding: 16px 0;
+    }
+
+    .header-note {
+        display: none;
+    }
+
+    .page-shell {
+        width: min(100% - 28px, 860px);
+        padding-top: 32px;
+    }
+
+    h1 {
+        font-size: 43px;
+    }
+
+    .lead {
+        font-size: 18px;
+    }
+
+    .guide-section {
+        padding: 42px 0;
+    }
+
+    .guide-section > h2 {
+        font-size: 30px;
+    }
+
+    .compare,
+    .property-groups,
+    .decision-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .parent-children {
+        grid-template-columns: 1fr;
+    }
+
+    /* The same hero change explained in the guide */
+    .portfolio-hero-demo {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .portfolio-hero-demo img {
+        order: -1;
+        width: 118px;
+        height: 118px;
+    }
+
+    /* Two cards become one column */
+    .cards-demo {
+        grid-template-columns: 1fr;
+    }
+
+    /* Image + text becomes stacked */
+    .work-demo {
+        display: block;
+    }
+
+    .work-demo img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 14px;
+    }
+
+    .semantic-articles {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-toc nav {
+        columns: 1;
+    }
+}
+
+@media (max-width: 430px) {
+    pre {
+        font-size: 12px;
+    }
+
+    .demo-body {
+        padding: 16px;
+    }
+
+    .full-strip-demo {
+        margin-inline: -16px;
+        padding-inline: 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="#top">Learn CSS</a>
+        <p class="header-note">Layout, classes, responsive design and the properties you actually need.</p>
+    </div>
+</header>
+
+<details class="mobile-toc">
+    <summary>Contents</summary>
+    <nav>
+        <a href="#mental-model">Mental model</a>
+        <a href="#html-structure">HTML structure</a>
+        <a href="#classes">Classes</a>
+        <a href="#page-width">Page width</a>
+        <a href="#full-background">Full-width background</a>
+        <a href="#flex-grid">Flex vs Grid</a>
+        <a href="#hero">Hero</a>
+        <a href="#cards">Two cards</a>
+        <a href="#work-row">Image + text</a>
+        <a href="#header">Header / nav</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#images">Images</a>
+        <a href="#typography">Typography</a>
+        <a href="#selectors">Selectors</a>
+        <a href="#responsive">Responsive CSS</a>
+        <a href="#order">Order</a>
+        <a href="#properties">Property reference</a>
+        <a href="#template">Complete template</a>
+        <a href="#debugging">Common problems</a>
+    </nav>
+</details>
+
+<div class="page-shell" id="top">
+    <aside class="sidebar">
+        <p class="sidebar-title">Contents</p>
+        <a href="#mental-model">Mental model</a>
+        <a href="#html-structure">HTML structure</a>
+        <a href="#classes">Where classes go</a>
+        <a href="#page-width">Centered page width</a>
+        <a href="#full-background">Full-width background</a>
+        <a href="#flex-grid">Flex vs Grid</a>
+        <a href="#hero">Text left + image right</a>
+        <a href="#cards">Two cards</a>
+        <a href="#work-row">Image + text row</a>
+        <a href="#header">Header / navigation</a>
+        <a href="#spacing">Margin / padding / gap</a>
+        <a href="#images">Images</a>
+        <a href="#typography">Typography</a>
+        <a href="#selectors">Selectors & stacking</a>
+        <a href="#responsive">Responsive workflow</a>
+        <a href="#order">Order</a>
+        <a href="#properties">CSS properties</a>
+        <a href="#template">Complete template</a>
+        <a href="#debugging">Common problems</a>
+    </aside>
+
+    <main class="guide">
+        <section class="guide-intro">
+            <p class="eyebrow">HTML + CSS reference</p>
+            <h1>Build the layout by understanding who controls what.</h1>
+            <p class="lead">
+                This page explains the same portfolio patterns you can see in the browser:
+                centered content, full-width colored sections, text beside an image, two cards,
+                project rows, semantic HTML, class placement and mobile transformations.
+                Open DevTools and inspect this page — the page itself uses these rules.
+            </p>
+        </section>
+
+        <section class="guide-section" id="mental-model">
+            <h2>The mental model</h2>
+            <p>Before writing CSS, identify the <strong>parent</strong> and its <strong>children</strong>. Layout properties normally belong to the parent. Properties that change one item normally belong to that item.</p>
+
+            <div class="demo">
+                <p class="demo-title">Parent controls the relationship between children</p>
+                <div class="demo-body">
+                    <div class="parent-demo">
+                        <span>.hero — parent</span>
+                        <div class="parent-children">
+                            <div class="child-demo"><strong>.hero-copy</strong><br>text child</div>
+                            <div class="child-demo"><strong>.hero-photo</strong><br>image child</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule">
+                <strong>The rule to remember</strong>
+                Parent = layout of children. Child = appearance/size of itself. Container = width of the page. Media query = only the mobile changes.
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>You want to…</th><th>Put it on…</th><th>Typical CSS</th></tr></thead>
+                    <tbody>
+                        <tr><td>Place two things beside each other</td><td>Their parent</td><td><code>display: flex/grid</code></td></tr>
+                        <tr><td>Create space between those things</td><td>Their parent</td><td><code>gap</code></td></tr>
+                        <tr><td>Center and limit page width</td><td>Container / wrapper</td><td><code>width, max-width, margin</code></td></tr>
+                        <tr><td>Change one image</td><td>Image or image class</td><td><code>width, height, object-fit</code></td></tr>
+                        <tr><td>Add space inside a card</td><td>The card</td><td><code>padding</code></td></tr>
+                        <tr><td>Add space outside a block</td><td>The block</td><td><code>margin</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="guide-section" id="html-structure">
+            <h2>HTML structure: which element should you use?</h2>
+            <p>Use semantic elements when they describe the job of the content. Use <code class="inline-code">div</code> when you only need a wrapper for layout or styling.</p>
+
+            <div class="demo">
+                <p class="demo-title">A normal page structure</p>
+                <div class="demo-body semantic-demo">
+                    <div class="semantic-box"><strong>&lt;header&gt;</strong> — top of the site, usually logo/navigation</div>
+                    <div class="semantic-main">
+                        <strong>&lt;main&gt;</strong> — unique main content of this page
+                        <div class="semantic-section">
+                            <strong>&lt;section&gt;</strong> — one themed area, usually has a heading
+                            <div class="semantic-articles">
+                                <article><strong>&lt;article&gt;</strong><br>independent card/post/work item</article>
+                                <article><strong>&lt;article&gt;</strong><br>another independent item</article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="semantic-box"><strong>&lt;footer&gt;</strong> — bottom/site information</div>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Element</th><th>Use it when…</th><th>Portfolio example</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>header</code></td><td>It is the top/site header.</td><td>Navigation bar</td></tr>
+                        <tr><td><code>nav</code></td><td>It contains navigation links.</td><td>Works / Blog / Contact</td></tr>
+                        <tr><td><code>main</code></td><td>It wraps the unique content of the page.</td><td>Everything between header and footer</td></tr>
+                        <tr><td><code>section</code></td><td>It groups a topic/area and usually has a heading.</td><td>Hero, Recent posts, Featured works</td></tr>
+                        <tr><td><code>article</code></td><td>The item could make sense on its own.</td><td>One blog card or one work/project</td></tr>
+                        <tr><td><code>div</code></td><td>You only need a layout/styling wrapper.</td><td><code>.page-width</code>, <code>.work-copy</code>, metadata wrapper</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML</div>
+  <pre><code>&lt;header class=&quot;site-header&quot;&gt;
+    &lt;nav class=&quot;desktop-nav&quot;&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;section class=&quot;hero page-width&quot;&gt;...&lt;/section&gt;
+
+    &lt;section class=&quot;recent-posts&quot;&gt;
+        &lt;div class=&quot;page-width&quot;&gt;
+            &lt;article class=&quot;post-card&quot;&gt;...&lt;/article&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer class=&quot;site-footer&quot;&gt;...&lt;/footer&gt;</code></pre>
+</div>
+
+        </section>
+
+        <section class="guide-section" id="classes">
+            <h2>Where should classes go?</h2>
+            <p>A class should have a clear job. Do not create a class for every tag, but also do not force one huge class to control everything.</p>
+
+            <h3>Stacking classes is normal</h3>
+            <p>One element can have several classes separated by spaces. The browser applies all matching CSS rules.</p>
+
+            <div class="stack-demo">
+                <span class="stack-pill">.hero = layout</span>
+                <span class="stack-pill">.page-width = width + centering</span>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML</div>
+  <pre><code>&lt;section class=&quot;hero page-width&quot;&gt;
+    &lt;div class=&quot;hero-copy&quot;&gt;
+        &lt;h1&gt;Hi, I am John&lt;/h1&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.png&quot; alt=&quot;Portrait&quot;&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">CSS</div>
+  <pre><code>.page-width {
+    width: 90%;
+    max-width: 856px;
+    margin: 0 auto;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 243px;
+    gap: 96px;
+    align-items: center;
+}
+
+.hero-photo {
+    width: 243px;
+    height: 243px;
+    object-fit: cover;
+    border-radius: 50%;
+}</code></pre>
+</div>
+
+
+            <div class="rule">
+                <strong>You do not need <code>class</code> on every line.</strong>
+                If an element is unique inside a component, select it through its parent: <code>.hero-copy h1</code> or <code>.work-row img</code>.
+            </div>
+
+            <div class="decision-grid">
+                <div class="decision"><strong>Create a class</strong> when the component is reusable, needs a special layout, differs from other elements, or is used by JavaScript.</div>
+                <div class="decision"><strong>Use a descendant selector</strong> when the element is already clearly identified by its parent, e.g. <code>.post-card h3</code>.</div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="page-width">
+            <h2>How to keep the whole page centered</h2>
+            <p>The safest reusable pattern is a container. It becomes smaller on narrow screens but stops growing on large screens.</p>
+
+            
+<div class="code-block">
+  <div class="code-label">CSS — easy version</div>
+  <pre><code>.page-width {
+    width: 90%;
+    max-width: 856px;
+    margin: 0 auto;
+}</code></pre>
+</div>
+
+
+            <p><code class="inline-code">width: 90%</code> makes it responsive. <code class="inline-code">max-width: 856px</code> stops it from becoming too wide. <code class="inline-code">margin: 0 auto</code> centers it.</p>
+
+            <h3>The compact version used by the portfolio</h3>
+            
+<div class="code-block">
+  <div class="code-label">CSS — same idea</div>
+  <pre><code>.page-width {
+    width: min(856px, calc(100% - 36px));
+    margin-inline: auto;
+}</code></pre>
+</div>
+
+
+            <p><code class="inline-code">min()</code> chooses the smaller value: either 856px or the available width minus 36px. The 36px gives about 18px space on each side.</p>
+
+            <div class="demo">
+                <p class="demo-title">The content can be narrow while the browser is wide</p>
+                <div class="demo-body">
+                    <div class="inner-width-demo">
+                        <strong>Centered content</strong>
+                        <div class="width-bars">
+                            <div class="width-bar long"></div>
+                            <div class="width-bar medium"></div>
+                            <div class="width-bar short"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="full-background">
+            <h2>Full-width background + centered content</h2>
+            <p>This is one of the most useful patterns in the design. The outer <code class="inline-code">section</code> owns the background. An inner container owns the content width.</p>
+
+            <div class="demo">
+                <p class="demo-title">The blue area reaches the edges; the content does not</p>
+                <div class="demo-body">
+                    <div class="full-strip-demo">
+                        <div class="inner-width-demo">
+                            <strong>.page-width</strong><br>
+                            The text/cards stay centered and limited.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML</div>
+  <pre><code>&lt;section class=&quot;recent-posts&quot;&gt;
+    &lt;div class=&quot;page-width&quot;&gt;
+        &lt;h2&gt;Recent posts&lt;/h2&gt;
+        ...
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">CSS</div>
+  <pre><code>.recent-posts {
+    background: #edf7fa;
+    padding: 20px 0 32px;
+}
+
+.page-width {
+    width: 90%;
+    max-width: 856px;
+    margin: 0 auto;
+}</code></pre>
+</div>
+
+
+            <div class="rule">
+                <strong>Do not put <code>max-width</code> on the blue section.</strong>
+                If you do, the blue background becomes narrow too. Outer section = full-width background. Inner container = narrow centered content.
+            </div>
+        </section>
+
+        <section class="guide-section" id="flex-grid">
+            <h2>Flex or Grid?</h2>
+            <p>You can build many layouts with either, but choosing consistently makes the code easier to understand.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Situation</th><th>Prefer</th><th>Why</th></tr></thead>
+                    <tbody>
+                        <tr><td>Navigation, metadata, icons, small row</td><td>Flex</td><td>You mainly care about one direction.</td></tr>
+                        <tr><td>Text + image with controlled columns</td><td>Grid</td><td>You can explicitly define both columns.</td></tr>
+                        <tr><td>Two equal cards</td><td>Grid</td><td><code>repeat(2, 1fr)</code> gives equal columns.</td></tr>
+                        <tr><td>Image 246px + text uses the rest</td><td>Grid</td><td><code>246px 1fr</code> describes it directly.</td></tr>
+                        <tr><td>Center something horizontally + vertically</td><td>Flex/Grid</td><td><code>justify-content</code> + <code>align-items</code>, or <code>place-items</code>.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">Flex</div>
+  <pre><code>.meta {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Grid</div>
+  <pre><code>.work-row {
+    display: grid;
+    grid-template-columns: 246px 1fr;
+    gap: 18px;
+}</code></pre>
+</div>
+
+        </section>
+
+        <section class="guide-section" id="hero">
+            <h2>Text on the left, image on the right</h2>
+            <p>The parent controls the two-column layout. The image class controls the image dimensions. The text wrapper mainly gives you a clean selector for its heading and paragraph.</p>
+
+            <div class="demo">
+                <p class="demo-title">Live example — resize the browser below 700px</p>
+                <div class="demo-body">
+                    <div class="portfolio-hero-demo">
+                        <div>
+                            <h3>Hi, I am John,<br>Creative Technologist</h3>
+                            <p>Text fills the flexible column. The image keeps a predictable size.</p>
+                            <a class="demo-button" href="#hero">Download Resume</a>
+                        </div>
+                        <img src="assets/avatar.png" alt="Example portrait">
+                    </div>
+                </div>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML</div>
+  <pre><code>&lt;section class=&quot;hero page-width&quot;&gt;
+    &lt;div class=&quot;hero-copy&quot;&gt;
+        &lt;h1&gt;Hi, I am John&lt;/h1&gt;
+        &lt;p&gt;...&lt;/p&gt;
+        &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Download Resume&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.png&quot; alt=&quot;Portrait&quot;&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Desktop CSS</div>
+  <pre><code>.hero {
+    display: grid;
+    grid-template-columns: 1fr 243px;
+    gap: 96px;
+    align-items: center;
+    padding: 80px 0 70px;
+}
+
+.hero-photo {
+    width: 243px;
+    height: 243px;
+    object-fit: cover;
+    border-radius: 50%;
+}</code></pre>
+</div>
+
+
+            <p><strong>Why:</strong> <code class="inline-code">1fr</code> means “use the remaining space for text.” <code class="inline-code">243px</code> reserves a predictable image column. <code class="inline-code">gap</code> creates the space between them. <code class="inline-code">align-items: center</code> aligns the two children vertically.</p>
+
+            <h3>Mobile</h3>
+            
+<div class="code-block">
+  <div class="code-label">Mobile CSS</div>
+  <pre><code>@media (max-width: 700px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        text-align: center;
+    }
+
+    .hero-photo {
+        order: -1;
+        width: 174px;
+        height: 174px;
+    }
+}</code></pre>
+</div>
+
+
+            <p>You are allowed to change Grid to Flex at the breakpoint. The desktop layout is horizontal; the mobile layout is one vertical column. <code class="inline-code">order: -1</code> moves the image above the text visually.</p>
+        </section>
+
+        <section class="guide-section" id="cards">
+            <h2>Two boxes beside each other</h2>
+            <p>The <strong>grid parent</strong> decides how many cards fit in a row. Each card only controls its own padding, background and typography.</p>
+
+            <div class="demo">
+                <p class="demo-title">Two equal columns</p>
+                <div class="cards-demo">
+                    <article class="mini-card">
+                        <h4>Making a design system</h4>
+                        <p>Card content. The grid parent controls where this card sits.</p>
+                    </article>
+                    <article class="mini-card">
+                        <h4>Creating pixel perfect icons</h4>
+                        <p>Both cards receive exactly one fraction of the available width.</p>
+                    </article>
+                </div>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML</div>
+  <pre><code>&lt;div class=&quot;post-grid&quot;&gt;
+    &lt;article class=&quot;post-card&quot;&gt;...&lt;/article&gt;
+    &lt;article class=&quot;post-card&quot;&gt;...&lt;/article&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Desktop CSS</div>
+  <pre><code>.post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.post-card {
+    padding: 24px;
+    background: white;
+    border-radius: 4px;
+}</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Mobile CSS</div>
+  <pre><code>@media (max-width: 700px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .post-card {
+        padding: 18px;
+    }
+}</code></pre>
+</div>
+
+
+            <p><code class="inline-code">display: grid</code> does not need to be repeated inside the media query. It still applies. Only the column count and padding change.</p>
+        </section>
+
+        <section class="guide-section" id="work-row">
+            <h2>Image on the left, text on the right</h2>
+            <p>This is the featured-work pattern. Use an <code class="inline-code">article</code> because each project is a self-contained item.</p>
+
+            <div class="demo">
+                <p class="demo-title">Live work row</p>
+                <div class="demo-body">
+                    <article class="work-demo">
+                        <img src="assets/fs1.png" alt="Dashboard project example">
+                        <div>
+                            <h3>Designing Dashboards</h3>
+                            <div class="meta-demo">
+                                <span class="year-demo">2026</span>
+                                <span class="category-demo">Dashboard</span>
+                            </div>
+                            <p>The image has a fixed desktop box. The text column uses the rest of the row.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML</div>
+  <pre><code>&lt;article class=&quot;work-row&quot;&gt;
+    &lt;img src=&quot;project.jpg&quot; alt=&quot;Project&quot;&gt;
+
+    &lt;div class=&quot;work-copy&quot;&gt;
+        &lt;h3&gt;Designing Dashboards&lt;/h3&gt;
+
+        &lt;div class=&quot;work-meta&quot;&gt;
+            &lt;span class=&quot;year&quot;&gt;2026&lt;/span&gt;
+            &lt;span class=&quot;category&quot;&gt;Dashboard&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;p&gt;Description...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Desktop CSS</div>
+  <pre><code>.work-row {
+    display: grid;
+    grid-template-columns: 246px 1fr;
+    gap: 18px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.work-row img {
+    width: 246px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.work-meta {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Mobile CSS</div>
+  <pre><code>@media (max-width: 700px) {
+    .work-row {
+        display: block;
+    }
+
+    .work-row img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 14px;
+    }
+}</code></pre>
+</div>
+
+
+            <p><strong>Why switch to <code class="inline-code">display: block</code>?</strong> A normal block layout naturally puts the image above the text. The image becomes fluid with <code class="inline-code">width: 100%; height: auto</code>.</p>
+        </section>
+
+        <section class="guide-section" id="header">
+            <h2>Header and navigation</h2>
+            <p>For a simple horizontal navigation, Flex is enough. Use a wider container than the main content if the design requires the nav to sit closer to the edges.</p>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML</div>
+  <pre><code>&lt;header class=&quot;site-header&quot;&gt;
+    &lt;div class=&quot;header-inner&quot;&gt;
+        &lt;nav class=&quot;desktop-nav&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Works&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Blog&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+
+        &lt;button class=&quot;menu-button&quot;&gt;Menu&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Desktop CSS</div>
+  <pre><code>.header-inner {
+    width: 90%;
+    max-width: 1040px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 34px;
+}
+
+.menu-button {
+    display: none;
+}</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Mobile CSS</div>
+  <pre><code>@media (max-width: 700px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+}</code></pre>
+</div>
+
+
+            <p><code class="inline-code">justify-content</code> moves children along the main axis. In a normal row that means left/right. <code class="inline-code">align-items</code> controls the cross axis, normally vertical alignment.</p>
+        </section>
+
+        <section class="guide-section" id="spacing">
+            <h2>Margin, padding and gap</h2>
+
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Property</th><th>Meaning</th><th>Typical place</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>padding</code></td><td>Space <strong>inside</strong> an element.</td><td>Section, card, button.</td></tr>
+                        <tr><td><code>margin</code></td><td>Space <strong>outside</strong> an element.</td><td>Between headings/sections/cards.</td></tr>
+                        <tr><td><code>gap</code></td><td>Space <strong>between children</strong> of a Flex/Grid parent.</td><td>The parent.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">Padding shorthand</div>
+  <pre><code>padding: 20px;
+/* all sides */
+
+padding: 20px 10px;
+/* top/bottom | left/right */
+
+padding: 20px 0 32px;
+/* top | left/right | bottom */
+
+padding: 10px 20px 30px 40px;
+/* top | right | bottom | left */</code></pre>
+</div>
+
+
+            <div class="rule">
+                <strong>Do not use random margins between Flex/Grid children if <code>gap</code> can do the job.</strong>
+                The spacing rule belongs to the parent because the parent controls the relationship between the children.
+            </div>
+        </section>
+
+        <section class="guide-section" id="images">
+            <h2>Images without stretching or overflow</h2>
+
+            
+<div class="code-block">
+  <div class="code-label">Safe default</div>
+  <pre><code>img {
+    display: block;
+    max-width: 100%;
+}</code></pre>
+</div>
+
+
+            <h3>Fixed image box</h3>
+            
+<div class="code-block">
+  <div class="code-label">CSS</div>
+  <pre><code>.hero-photo {
+    width: 243px;
+    height: 243px;
+    object-fit: cover;
+    border-radius: 50%;
+}</code></pre>
+</div>
+
+
+            <p><code class="inline-code">object-fit: cover</code> keeps the image proportions and fills the box. Parts of the image may be cropped, but it is not distorted.</p>
+
+            <h3>Fluid mobile image</h3>
+            
+<div class="code-block">
+  <div class="code-label">CSS</div>
+  <pre><code>.work-row img {
+    width: 100%;
+    height: auto;
+}</code></pre>
+</div>
+
+
+            <p>Use this when you want the image to scale with the container and keep its natural aspect ratio.</p>
+        </section>
+
+        <section class="guide-section" id="typography">
+            <h2>Typography and simple visual styling</h2>
+            <p>Do layout first. Typography and decoration come after the structure works.</p>
+
+            
+<div class="code-block">
+  <div class="code-label">Common typography</div>
+  <pre><code>body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #21243d;
+}
+
+.hero-copy h1 {
+    font-size: 44px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.category {
+    color: #8695a4;
+    font-size: 20px;
+}</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">Button</div>
+  <pre><code>.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background: #ff6464;
+    border-radius: 2px;
+    text-decoration: none;
+}</code></pre>
+</div>
+
+
+            <p><code class="inline-code">inline-block</code> is useful for links styled like buttons because the link can keep inline flow while accepting reliable padding and dimensions.</p>
+        </section>
+
+        <section class="guide-section" id="selectors">
+            <h2>Selectors and class stacking</h2>
+
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Selector</th><th>Meaning</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>.hero</code></td><td>Any element with class <code>hero</code>.</td></tr>
+                        <tr><td><code>.hero-copy h1</code></td><td>An <code>h1</code> inside <code>.hero-copy</code>.</td></tr>
+                        <tr><td><code>.work-row img</code></td><td>An image inside <code>.work-row</code>.</td></tr>
+                        <tr><td><code>.desktop-nav a:hover</code></td><td>A link inside the nav while the pointer is over it.</td></tr>
+                        <tr><td><code>.mobile-nav.open</code></td><td>One element that has <strong>both</strong> classes.</td></tr>
+                        <tr><td><code>.works-page .work-row</code></td><td>A <code>.work-row</code> somewhere inside <code>.works-page</code>.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">Important difference</div>
+  <pre><code>&lt;nav class=&quot;mobile-nav open&quot;&gt;...&lt;/nav&gt;
+
+.mobile-nav.open {
+    display: block;
+}
+/* SAME element has both classes */
+
+.mobile-nav .open {
+    ...
+}
+/* .open is a CHILD/DESCENDANT inside .mobile-nav */</code></pre>
+</div>
+
+        </section>
+
+        <section class="guide-section" id="responsive">
+            <h2>How to organize responsive CSS</h2>
+            <p>Write the desktop/base layout first. Put the breakpoint near the bottom of the stylesheet and override only the properties that actually change.</p>
+
+            <div class="compare">
+                <div class="compare-panel">
+                    <h4>Desktop</h4>
+                    <div class="portfolio-hero-demo">
+                        <div>
+                            <h3 style="font-size:20px">Text</h3>
+                            <p>Left side</p>
+                        </div>
+                        <img src="assets/avatar.png" alt="" style="width:90px;height:90px">
+                    </div>
+                </div>
+                <div class="compare-panel">
+                    <h4>Mobile idea</h4>
+                    <div class="phone-frame">
+                        <div class="phone-hero">
+                            <div>
+                                <h4>Text</h4>
+                                <p>Centered below image</p>
+                            </div>
+                            <img src="assets/avatar.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+<div class="code-block">
+  <div class="code-label">The pattern</div>
+  <pre><code>/* BASE / DESKTOP */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* MOBILE OVERRIDES */
+@media (max-width: 700px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}</code></pre>
+</div>
+
+
+            <h3>Typical desktop → mobile conversions</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Desktop</th><th>Mobile</th><th>Reason</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>repeat(2, 1fr)</code></td><td><code>1fr</code></td><td>Two cards become one per row.</td></tr>
+                        <tr><td><code>246px 1fr</code></td><td><code>display: block</code></td><td>Image goes above text.</td></tr>
+                        <tr><td>Horizontal hero</td><td><code>flex-direction: column</code></td><td>Content stacks vertically.</td></tr>
+                        <tr><td>Large image</td><td>Smaller width/height</td><td>Fits a narrow screen.</td></tr>
+                        <tr><td>44px heading</td><td>30–32px heading</td><td>Prevents awkward wrapping.</td></tr>
+                        <tr><td>Desktop nav shown</td><td><code>display: none</code></td><td>Hide crowded navigation.</td></tr>
+                        <tr><td>Mobile control hidden</td><td><code>display: block</code></td><td>Show mobile replacement.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>A breakpoint like <code class="inline-code">700px</code> is not magic. Choose the point where your layout stops fitting comfortably. For this portfolio-style layout, 700px is a simple useful breakpoint.</p>
+        </section>
+
+        <section class="guide-section" id="order">
+            <h2>When to use <code>order</code></h2>
+            <p>Use <code class="inline-code">order</code> when the HTML order is good, but you need a different <strong>visual</strong> order at a breakpoint.</p>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML order</div>
+  <pre><code>&lt;section class=&quot;hero&quot;&gt;
+    &lt;div class=&quot;hero-copy&quot;&gt;TEXT&lt;/div&gt;
+    &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.png&quot; alt=&quot;&quot;&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+            <p>The HTML order is TEXT → IMAGE. On mobile, you may want IMAGE → TEXT.</p>
+
+            
+<div class="code-block">
+  <div class="code-label">Mobile</div>
+  <pre><code>@media (max-width: 700px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-photo {
+        order: -1;
+    }
+}</code></pre>
+</div>
+
+
+            <div class="rule">
+                <strong><code>order</code> works on Flex/Grid items.</strong>
+                If the parent is not Flex or Grid, <code>order</code> will not rearrange the children.
+            </div>
+
+            <p>Use <code class="inline-code">flex-direction: column</code> when you only need “beside each other → under each other.” Add <code class="inline-code">order: -1</code> only if the mobile order also needs to change.</p>
+        </section>
+
+        <section class="guide-section" id="properties">
+            <h2>CSS property reference for this design</h2>
+            <p>This is the set of properties you are most likely to need to recreate this type of portfolio layout.</p>
+
+            <div class="property-groups">
+                <div class="property-group">
+                    <h3>Layout</h3>
+                    <ul class="property-list">
+                        <li><code>display</code> — block, flex, grid, none, inline-block</li>
+                        <li><code>grid-template-columns</code> — define grid columns</li>
+                        <li><code>flex-direction</code> — row or column</li>
+                        <li><code>justify-content</code> — main-axis alignment</li>
+                        <li><code>align-items</code> — cross-axis alignment</li>
+                        <li><code>gap</code> — space between Flex/Grid children</li>
+                        <li><code>order</code> — visual order of Flex/Grid item</li>
+                    </ul>
+                </div>
+
+                <div class="property-group">
+                    <h3>Size</h3>
+                    <ul class="property-list">
+                        <li><code>width</code> — element width</li>
+                        <li><code>max-width</code> — maximum allowed width</li>
+                        <li><code>min-width</code> — minimum allowed width</li>
+                        <li><code>height</code> — fixed height</li>
+                        <li><code>min-height</code> — minimum height</li>
+                        <li><code>max-height</code> — maximum height</li>
+                        <li><code>min()</code> / <code>calc()</code> — responsive calculations</li>
+                    </ul>
+                </div>
+
+                <div class="property-group">
+                    <h3>Spacing</h3>
+                    <ul class="property-list">
+                        <li><code>margin</code> — outside space</li>
+                        <li><code>margin-inline</code> — left/right logical margin</li>
+                        <li><code>margin-bottom</code> — outside space below</li>
+                        <li><code>padding</code> — inside space</li>
+                        <li><code>padding-top/bottom</code> — targeted inside spacing</li>
+                        <li><code>gap</code> — controlled repeated spacing</li>
+                    </ul>
+                </div>
+
+                <div class="property-group">
+                    <h3>Images</h3>
+                    <ul class="property-list">
+                        <li><code>max-width: 100%</code> — prevent overflow</li>
+                        <li><code>height: auto</code> — preserve aspect ratio</li>
+                        <li><code>object-fit: cover</code> — crop without distortion</li>
+                        <li><code>border-radius</code> — rounded/circle image</li>
+                        <li><code>display: block</code> — remove inline image baseline gap</li>
+                    </ul>
+                </div>
+
+                <div class="property-group">
+                    <h3>Typography</h3>
+                    <ul class="property-list">
+                        <li><code>font-family</code> — typeface</li>
+                        <li><code>font-size</code> — text size</li>
+                        <li><code>font-weight</code> — thickness</li>
+                        <li><code>line-height</code> — line spacing</li>
+                        <li><code>color</code> — text color</li>
+                        <li><code>text-align</code> — left/center/right</li>
+                        <li><code>text-decoration</code> — underline etc.</li>
+                    </ul>
+                </div>
+
+                <div class="property-group">
+                    <h3>Surface / decoration</h3>
+                    <ul class="property-list">
+                        <li><code>background</code> — background color</li>
+                        <li><code>border</code> — outline</li>
+                        <li><code>border-bottom</code> — separator line</li>
+                        <li><code>border-radius</code> — rounded corners</li>
+                        <li><code>box-shadow</code> — shadow</li>
+                        <li><code>cursor: pointer</code> — clickable cursor</li>
+                    </ul>
+                </div>
+
+                <div class="property-group">
+                    <h3>Positioning / layers</h3>
+                    <ul class="property-list">
+                        <li><code>position: relative</code> — reference for positioned children</li>
+                        <li><code>position: absolute</code> — remove from normal flow and position precisely</li>
+                        <li><code>position: sticky</code> — stay visible while scrolling</li>
+                        <li><code>top/right/bottom/left</code> — position offsets</li>
+                        <li><code>z-index</code> — layer order</li>
+                    </ul>
+                </div>
+
+                <div class="property-group">
+                    <h3>Responsive / useful</h3>
+                    <ul class="property-list">
+                        <li><code>@media</code> — conditional styles by viewport</li>
+                        <li><code>box-sizing: border-box</code> — predictable sizing</li>
+                        <li><code>overflow-x: auto</code> — local horizontal scroll when needed</li>
+                        <li><code>scroll-behavior: smooth</code> — smooth anchor movement</li>
+                        <li><code>:hover</code> — pointer interaction state</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>What <code>1fr</code> means</h3>
+            <p><code class="inline-code">fr</code> is a fraction of the available Grid space. <code class="inline-code">repeat(2, 1fr)</code> means two equal columns. <code class="inline-code">246px 1fr</code> means a fixed 246px first column and a flexible second column.</p>
+
+            <h3>Why <code>box-sizing: border-box</code> is worth using</h3>
+            
+<div class="code-block">
+  <div class="code-label">CSS</div>
+  <pre><code>* {
+    box-sizing: border-box;
+}</code></pre>
+</div>
+
+            <p>Padding and border are included inside the width you set. A 300px element with padding stays 300px wide instead of unexpectedly becoming wider.</p>
+        </section>
+
+        <section class="guide-section" id="template">
+            <h2>Complete reusable starter template</h2>
+            <p>This is intentionally small enough to understand, but it contains the major layout patterns from the design.</p>
+
+            
+<div class="code-block">
+  <div class="code-label">HTML</div>
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Portfolio&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header&gt;
+    &lt;div class=&quot;header-inner&quot;&gt;
+        &lt;nav&gt;
+            &lt;a href=&quot;#&quot;&gt;Works&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Blog&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;section class=&quot;hero container&quot;&gt;
+        &lt;div class=&quot;hero-copy&quot;&gt;
+            &lt;h1&gt;Hi, I am John&lt;/h1&gt;
+            &lt;p&gt;Short introduction...&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Download Resume&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.jpg&quot; alt=&quot;Portrait&quot;&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;colored-section&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;h2&gt;Recent posts&lt;/h2&gt;
+
+            &lt;div class=&quot;cards&quot;&gt;
+                &lt;article class=&quot;card&quot;&gt;First post&lt;/article&gt;
+                &lt;article class=&quot;card&quot;&gt;Second post&lt;/article&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;container&quot;&gt;
+        &lt;h2&gt;Featured works&lt;/h2&gt;
+
+        &lt;article class=&quot;work&quot;&gt;
+            &lt;img src=&quot;project.jpg&quot; alt=&quot;Project&quot;&gt;
+
+            &lt;div&gt;
+                &lt;h3&gt;Project title&lt;/h3&gt;
+                &lt;p&gt;Description...&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;Footer&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+
+            
+<div class="code-block">
+  <div class="code-label">CSS</div>
+  <pre><code>* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.container {
+    width: 90%;
+    max-width: 856px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+.header-inner {
+    width: 90%;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 24px 0;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+/* HERO */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 243px;
+    gap: 60px;
+    align-items: center;
+    padding: 70px 0;
+}
+
+.hero-photo {
+    width: 243px;
+    height: 243px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background: #ff6464;
+    text-decoration: none;
+}
+
+/* FULL-WIDTH BACKGROUND + TWO CARDS */
+.colored-section {
+    padding: 30px 0;
+    background: #edf7fa;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    padding: 24px;
+    background: white;
+}
+
+/* IMAGE + TEXT */
+.work {
+    display: grid;
+    grid-template-columns: 246px 1fr;
+    gap: 20px;
+    padding: 30px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.work img {
+    width: 246px;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-photo {
+        order: -1;
+        width: 174px;
+        height: 174px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .work {
+        display: block;
+    }
+
+    .work img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+    }
+}</code></pre>
+</div>
+
+        </section>
+
+        <section class="guide-section" id="debugging">
+            <h2>Common problems</h2>
+
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Problem</th><th>Check this</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>gap</code> does nothing</td><td>The parent must normally be <code>display: flex</code> or <code>display: grid</code>.</td></tr>
+                        <tr><td><code>order</code> does nothing</td><td>The item must be a child of a Flex/Grid parent.</td></tr>
+                        <tr><td>The page is not centered</td><td>Give the container a width/max-width and <code>margin: 0 auto</code>.</td></tr>
+                        <tr><td>The blue background is only in the middle</td><td>You probably put the background on the constrained container instead of the outer section.</td></tr>
+                        <tr><td>An image stretches</td><td>Use <code>object-fit: cover</code> for a fixed box or <code>height: auto</code> for a fluid image.</td></tr>
+                        <tr><td>Cards overflow on mobile</td><td>Change multi-column Grid to <code>1fr</code> in the media query.</td></tr>
+                        <tr><td>Mobile CSS seems ignored</td><td>Check the viewport meta tag and make sure the media query comes after the base rule.</td></tr>
+                        <tr><td>A 100% width element is still too wide</td><td>Use <code>box-sizing: border-box</code> and inspect padding/borders.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="rule">
+                <strong>Fast debugging question</strong>
+                “Which element should control this?” If it is about the relationship between several elements, inspect the parent. If it is only about one item, inspect that child.
+            </div>
+        </section>
+    </main>
+</div>
+
+<footer class="site-footer">
+    Learn CSS — static HTML + CSS. No framework required. Inspect <code>index.html</code> and <code>style.css</code> in DevTools.
+</footer>
+
+</body>
+</html>

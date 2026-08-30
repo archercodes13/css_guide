@@ -1,0 +1,829 @@
+
+/* =========================================================
+   LEARN CSS — LAYOUT & RESPONSIVE DESIGN
+   Open this file in DevTools. It is intentionally organized
+   in the same order as the page.
+   ========================================================= */
+
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+    --ink: #171717;
+    --muted: #6f6962;
+    --paper: #fbf8f4;
+    --surface: #ffffff;
+    --soft: #f1ebe4;
+    --line: #dfd8cf;
+    --accent: #d95f82;
+    --accent-soft: #f7e2e8;
+    --blue-soft: #e8f4f7;
+    --blue: #2f6775;
+    --code-bg: #181818;
+    --code-text: #f7f3ed;
+    --max-guide: 860px;
+}
+
+/* ---------- SAFE DEFAULTS ---------- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+code,
+pre {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+/* ---------- PAGE SHELL ---------- */
+.site-header {
+    border-bottom: 1px solid var(--line);
+    background: rgba(251, 248, 244, 0.96);
+}
+
+.header-inner {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.brand {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+}
+
+.header-note {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.mobile-toc {
+    display: none;
+}
+
+.page-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 52px 0 90px;
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 68px;
+    align-items: start;
+}
+
+.sidebar {
+    position: sticky;
+    top: 24px;
+}
+
+.sidebar-title {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.sidebar a {
+    display: block;
+    padding: 4px 0;
+    color: #59544e;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: var(--accent);
+}
+
+.guide {
+    min-width: 0;
+    max-width: var(--max-guide);
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+.guide-intro {
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+}
+
+h1 {
+    max-width: 780px;
+    margin: 0 0 22px;
+    font-size: clamp(42px, 7vw, 72px);
+}
+
+.lead {
+    max-width: 740px;
+    margin: 0;
+    color: #4f4a45;
+    font-size: 20px;
+    line-height: 1.55;
+}
+
+.guide-section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 24px;
+}
+
+.guide-section > h2 {
+    margin: 0 0 14px;
+    font-size: 36px;
+}
+
+.guide-section > h3 {
+    margin: 34px 0 12px;
+    font-size: 24px;
+}
+
+.guide-section > p,
+.guide-section > ul,
+.guide-section > ol {
+    max-width: 760px;
+}
+
+.guide-section p {
+    margin-top: 0;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.rule {
+    margin: 24px 0;
+    padding: 17px 20px;
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
+}
+
+.rule strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.small-note {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------- CODE ---------- */
+.code-block {
+    margin: 20px 0 28px;
+    border: 1px solid #2d2d2d;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--code-bg);
+}
+
+.code-label {
+    padding: 8px 14px;
+    border-bottom: 1px solid #343434;
+    color: #bdb6ad;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+pre {
+    margin: 0;
+    padding: 18px;
+    overflow-x: auto;
+    color: var(--code-text);
+    font-size: 13px;
+    line-height: 1.65;
+    tab-size: 4;
+}
+
+.inline-code {
+    padding: 2px 5px;
+    border: 1px solid #e2d8cc;
+    border-radius: 4px;
+    background: #f4ede5;
+    font-size: 0.9em;
+}
+
+/* ---------- TABLES ---------- */
+.table-wrap {
+    margin: 22px 0 30px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th,
+td {
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #f2ece5;
+    font-size: 13px;
+}
+
+td {
+    font-size: 14px;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+/* ---------- LIVE VISUAL EXAMPLES ---------- */
+.demo {
+    margin: 24px 0 32px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.demo-title {
+    margin: 0;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    background: #f5f0ea;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.demo-body {
+    padding: 22px;
+}
+
+.demo-caption {
+    margin: 14px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Parent / child */
+.parent-demo {
+    padding: 18px;
+    border: 2px solid #b98c98;
+    background: #fff7f9;
+}
+
+.parent-demo > span {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.parent-children {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 16px;
+}
+
+.child-demo {
+    min-height: 90px;
+    padding: 15px;
+    border: 1px solid #c9c1b8;
+    background: white;
+}
+
+/* Full width strip */
+.full-strip-demo {
+    margin-inline: -22px;
+    padding: 24px 22px;
+    background: var(--blue-soft);
+}
+
+.inner-width-demo {
+    width: 82%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 18px;
+    border: 1px dashed var(--blue);
+    background: #fff;
+}
+
+.width-bars {
+    display: grid;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.width-bar {
+    height: 12px;
+    border-radius: 20px;
+    background: #d9d1c7;
+}
+
+.width-bar.long { width: 100%; }
+.width-bar.medium { width: 78%; }
+.width-bar.short { width: 48%; }
+
+/* Hero live demo */
+.portfolio-hero-demo {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 34px;
+    align-items: center;
+}
+
+.portfolio-hero-demo h3 {
+    margin: 0 0 10px;
+    font-size: 28px;
+}
+
+.portfolio-hero-demo p {
+    margin: 0 0 16px;
+    color: var(--muted);
+}
+
+.demo-button {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 3px;
+    background: #ff6464;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.portfolio-hero-demo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Cards */
+.cards-demo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 22px;
+    background: #eaf5f8;
+}
+
+.mini-card {
+    padding: 19px;
+    background: white;
+    border-radius: 4px;
+}
+
+.mini-card h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.mini-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Work row */
+.work-demo {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.work-demo img {
+    width: 210px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.work-demo h3 {
+    margin: -4px 0 8px;
+    font-size: 24px;
+}
+
+.work-demo p {
+    margin: 10px 0 0;
+    color: var(--muted);
+}
+
+.meta-demo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.year-demo {
+    padding: 1px 9px;
+    border-radius: 20px;
+    background: #142850;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.category-demo {
+    color: #8695a4;
+    font-size: 14px;
+}
+
+/* Side-by-side comparison */
+.compare {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 22px 0 30px;
+}
+
+.compare-panel {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: white;
+}
+
+.compare-panel h4 {
+    margin: 0 0 14px;
+    font-size: 15px;
+}
+
+.phone-frame {
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 14px;
+    border: 7px solid #262626;
+    border-radius: 22px;
+    background: white;
+}
+
+.phone-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+}
+
+.phone-hero img {
+    order: -1;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.phone-hero h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.phone-hero p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.phone-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+}
+
+.phone-card {
+    padding: 12px;
+    background: #eaf5f8;
+    font-size: 12px;
+}
+
+.phone-work img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.phone-work h4 {
+    margin-bottom: 6px;
+}
+
+/* Semantic HTML */
+.semantic-demo {
+    display: grid;
+    gap: 10px;
+}
+
+.semantic-box {
+    padding: 12px;
+    border: 1px solid #cfc6bb;
+    background: #fff;
+}
+
+.semantic-box strong {
+    font-size: 13px;
+}
+
+.semantic-main {
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+    background: #f7f0e8;
+}
+
+.semantic-section {
+    padding: 10px;
+    border: 1px dashed #b79685;
+    background: #fff;
+}
+
+.semantic-articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.semantic-articles article {
+    padding: 9px;
+    background: #f5e4e9;
+    font-size: 12px;
+}
+
+/* Class stacking */
+.stack-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 16px 0;
+}
+
+.stack-pill {
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: var(--soft);
+    font-size: 13px;
+}
+
+.stack-result {
+    padding: 18px;
+    border: 1px solid var(--line);
+    background: white;
+}
+
+/* Property list */
+.property-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.property-group {
+    padding: 18px;
+    border: 1px solid var(--line);
+    background: white;
+}
+
+.property-group h3 {
+    margin: 0 0 13px;
+    font-size: 18px;
+}
+
+.property-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.property-list li {
+    padding: 7px 0;
+    border-bottom: 1px solid #eee7df;
+    font-size: 14px;
+}
+
+.property-list li:last-child {
+    border-bottom: 0;
+}
+
+.property-list code {
+    font-weight: 700;
+}
+
+/* Decision cards */
+.decision-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 22px 0;
+}
+
+.decision {
+    padding: 17px;
+    border: 1px solid var(--line);
+    background: white;
+}
+
+.decision strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Footer */
+.site-footer {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 30px 0 50px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ---------- RESPONSIVE GUIDE PAGE ----------
+   Same principle as the portfolio:
+   desktop CSS first, mobile only overrides what changes.
+   ------------------------------------------------------ */
+@media (max-width: 900px) {
+    .page-shell {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .mobile-toc {
+        display: block;
+        width: min(1180px, calc(100% - 40px));
+        margin: 20px auto 0;
+        border: 1px solid var(--line);
+        background: white;
+    }
+
+    .mobile-toc summary {
+        padding: 12px 15px;
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+    .mobile-toc nav {
+        padding: 0 15px 14px;
+        columns: 2;
+    }
+
+    .mobile-toc a {
+        display: block;
+        padding: 4px 0;
+        font-size: 13px;
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .header-inner {
+        padding: 16px 0;
+    }
+
+    .header-note {
+        display: none;
+    }
+
+    .page-shell {
+        width: min(100% - 28px, 860px);
+        padding-top: 32px;
+    }
+
+    h1 {
+        font-size: 43px;
+    }
+
+    .lead {
+        font-size: 18px;
+    }
+
+    .guide-section {
+        padding: 42px 0;
+    }
+
+    .guide-section > h2 {
+        font-size: 30px;
+    }
+
+    .compare,
+    .property-groups,
+    .decision-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .parent-children {
+        grid-template-columns: 1fr;
+    }
+
+    /* The same hero change explained in the guide */
+    .portfolio-hero-demo {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .portfolio-hero-demo img {
+        order: -1;
+        width: 118px;
+        height: 118px;
+    }
+
+    /* Two cards become one column */
+    .cards-demo {
+        grid-template-columns: 1fr;
+    }
+
+    /* Image + text becomes stacked */
+    .work-demo {
+        display: block;
+    }
+
+    .work-demo img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 14px;
+    }
+
+    .semantic-articles {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-toc nav {
+        columns: 1;
+    }
+}
+
+@media (max-width: 430px) {
+    pre {
+        font-size: 12px;
+    }
+
+    .demo-body {
+        padding: 16px;
+    }
+
+    .full-strip-demo {
+        margin-inline: -16px;
+        padding-inline: 16px;
+    }
+}
