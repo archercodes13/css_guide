@@ -1405,6 +1405,483 @@ td {
     }
 }
 
+
+/* ---------- PAGE WIDTH / CONTAINER VISUAL ---------- */
+.container-visual-demo {
+    margin: 26px 0 16px;
+    padding: 18px;
+    border: 1px solid #c9c3b7;
+    background: #e7e1d7;
+}
+
+.viewport-label {
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.container-outline {
+    width: 80%;
+    margin: 0 auto;
+    padding: 14px;
+    border: 2px solid #687d6d;
+    background: #f8f6f0;
+}
+
+.container-name {
+    margin-bottom: 14px;
+    color: #506155;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.container-content-demo {
+    padding: 14px;
+    border: 1px solid #d1cabf;
+    background: white;
+}
+
+.demo-line {
+    height: 9px;
+    margin: 9px 0;
+    border-radius: 999px;
+    background: #c8c2b7;
+}
+
+.demo-line.long { width: 90%; }
+.demo-line.medium { width: 65%; }
+.demo-line.short { width: 38%; }
+
+.viewport-color {
+    border-color: #a89e90;
+    background: #e9e2d8;
+    color: #5d554d;
+}
+
+.container-color {
+    border-color: #687d6d;
+    background: #dfe7df;
+    color: #3f5245;
+}
+
+.full-section-visual {
+    margin: 24px 0;
+    padding: 22px 0;
+    background: #dfe5dc;
+    border-top: 1px solid #bfc9bd;
+    border-bottom: 1px solid #bfc9bd;
+}
+
+.full-section-label {
+    width: 92%;
+    margin: 0 auto 14px;
+    color: #637065;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.inner-container-visual {
+    width: 80%;
+    margin: 0 auto;
+    padding: 16px;
+    background: #fbfaf6;
+    border: 2px solid #687d6d;
+}
+
+@media (max-width: 700px) {
+    .container-outline,
+    .inner-container-visual {
+        width: 92%;
+    }
+}
+
+
+/* ---------- COMPLETE BUILDING BLOCKS ---------- */
+.coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 24px 0 36px;
+}
+
+.coverage-item {
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+}
+
+.coverage-item strong,
+.coverage-item span {
+    display: block;
+}
+
+.coverage-item span {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.component-demo {
+    margin: 20px 0 26px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+}
+
+/* navigation */
+.nav-demo-wide,
+.nav-demo-small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 0;
+}
+
+.nav-demo-wide {
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-demo-brand {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+
+.nav-demo-links {
+    display: flex;
+    gap: 22px;
+    font-size: 13px;
+}
+
+.nav-demo-small {
+    max-width: 320px;
+    margin-top: 16px;
+    padding: 14px;
+    border: 1px solid var(--line);
+}
+
+.menu-lines {
+    width: 24px;
+    display: grid;
+    gap: 4px;
+}
+
+.menu-lines i {
+    height: 2px;
+    background: var(--ink);
+}
+
+/* intro */
+.intro-demo {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 28px;
+    align-items: center;
+}
+
+.intro-demo-copy small,
+.intro-demo-copy strong,
+.intro-demo-copy span {
+    display: block;
+}
+
+.intro-demo-copy small {
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .1em;
+}
+
+.intro-demo-copy strong {
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.intro-demo-copy span {
+    color: var(--muted);
+}
+
+.intro-demo-copy b {
+    width: fit-content;
+    margin-top: 16px;
+    display: block;
+    padding: 7px 12px;
+    background: var(--accent);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.intro-demo-visual {
+    min-height: 145px;
+    background:
+        linear-gradient(135deg, transparent 0 45%, rgba(255,255,255,.38) 45% 55%, transparent 55%),
+        #c9d3c9;
+}
+
+/* full band */
+.full-band-demo {
+    background: #dfe5dc;
+}
+
+.band-inner-demo {
+    width: 80%;
+    margin: 0 auto;
+    padding: 18px;
+    border: 1px solid #96a393;
+    background: #f8f6f0;
+}
+
+.band-inner-demo strong,
+.band-inner-demo span {
+    display: block;
+}
+
+.band-inner-demo span {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* heading row */
+.heading-row-demo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.heading-row-demo span {
+    color: var(--accent);
+    font-size: 13px;
+}
+
+/* card grid */
+.building-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.building-card {
+    min-height: 130px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    background: #ebe7de;
+}
+
+.building-card strong,
+.building-card span {
+    display: block;
+}
+
+.building-card span {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* media row */
+.building-media-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 22px;
+    align-items: start;
+}
+
+.building-media-visual {
+    min-height: 135px;
+    background:
+        linear-gradient(90deg, rgba(255,255,255,.48) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.48) 1px, transparent 1px),
+        #c8d2c8;
+    background-size: 34px 34px;
+}
+
+.building-media-copy > strong {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 21px;
+}
+
+.building-media-copy p {
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+.building-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.building-meta b {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+}
+
+.building-meta span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* text list */
+.text-list-demo article {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.text-list-demo article:first-child {
+    padding-top: 0;
+}
+
+.text-list-demo article:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.text-list-demo strong,
+.text-list-demo small,
+.text-list-demo span {
+    display: block;
+}
+
+.text-list-demo small {
+    margin: 5px 0 9px;
+    color: var(--muted);
+}
+
+.text-list-demo span {
+    color: #586158;
+    font-size: 13px;
+}
+
+/* reading width */
+.reading-width-demo {
+    margin: 22px 0 28px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    background: #e8e3d9;
+}
+
+.reading-width-demo > span {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.reading-page-demo {
+    width: 64%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid #c9c2b7;
+}
+
+.reading-page-demo > strong {
+    display: block;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 11px;
+}
+
+.reading-title-line,
+.reading-text-line {
+    height: 9px;
+    margin: 8px 0;
+    background: #c8c1b7;
+}
+
+.reading-title-line {
+    height: 14px;
+    width: 88%;
+    background: #67786a;
+}
+
+.reading-title-line.short {
+    width: 55%;
+}
+
+.reading-text-line.medium {
+    width: 70%;
+}
+
+.reading-media-demo {
+    min-height: 150px;
+    margin: 24px 0;
+    background: #cbd4ca;
+}
+
+/* footer */
+.footer-demo {
+    text-align: center;
+}
+
+.social-demo-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.social-demo-row span {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--ink);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.footer-demo small {
+    color: var(--muted);
+}
+
+@media (max-width: 700px) {
+    .coverage-grid,
+    .building-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-demo,
+    .building-media-row {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-demo-visual {
+        order: -1;
+        min-height: 120px;
+    }
+
+    .building-media-visual {
+        min-height: 170px;
+    }
+
+    .band-inner-demo {
+        width: 92%;
+    }
+
+    .reading-page-demo {
+        width: 92%;
+    }
+
+    .heading-row-demo {
+        align-items: flex-start;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -1436,6 +1913,7 @@ td {
         <a href="#selectors">Selectors</a>
         <a href="#responsive">Responsive CSS</a>
         <a href="#order">Visual order</a>
+        <a href="#building-blocks">Complete building blocks</a>
         <a href="#properties">Property reference</a>
         <a href="#template">Starter layout</a>
         <a href="#debugging">Debugging notes</a>
@@ -1448,7 +1926,7 @@ td {
         <a href="#mental-model">Layout logic</a>
         <a href="#html-structure">Page structure</a>
         <a href="#classes">Class placement</a>
-        <a href="#page-width">Containers</a>
+        <a href="#page-width">Center & 80% width</a>
         <a href="#full-background">Full-width sections</a>
         <a href="#flex-grid">Flex and Grid</a>
         <a href="#flex-grid-live">Flex and Grid live</a>
@@ -1462,6 +1940,7 @@ td {
         <a href="#selectors">Selectors and class logic</a>
         <a href="#responsive">Responsive strategy</a>
         <a href="#order">Visual order</a>
+        <a href="#building-blocks">Complete building blocks</a>
         <a href="#properties">Property reference</a>
         <a href="#template">Starter layout</a>
         <a href="#debugging">Debugging notes</a>
@@ -1706,51 +2185,217 @@ td {
         </section>
 
         <section class="guide-section" id="page-width">
-            <h2>How to control page width</h2>
-            <p>The safest reusable pattern is a container. It becomes smaller on narrow screens but stops growing on large screens.</p>
+            <h2>How to center the whole page and keep it at 80% width</h2>
 
-            
-<div class="code-block">
-  <div class="code-label">CSS — easy version</div>
-  <pre><code>.page-width {
-    width: 90%;
-    max-width: 856px;
-    margin: 0 auto;
-}</code></pre>
-</div>
+            <p>
+                Usually you do <strong>not</strong> make the whole <code class="inline-code">body</code> 80% wide.
+                Instead, you create a reusable inner wrapper such as <code class="inline-code">.container</code>.
+                The browser viewport stays full width, while the content inside the container stays centered.
+            </p>
 
+            <div class="container-visual-demo">
+                <div class="viewport-label">browser / viewport = 100%</div>
 
-            <p><code class="inline-code">width: 90%</code> makes it responsive. <code class="inline-code">max-width: 856px</code> stops it from becoming too wide. <code class="inline-code">margin: 0 auto</code> centers it.</p>
+                <div class="container-outline">
+                    <div class="container-name">.container = 80%</div>
 
-            <h3>The compact version used by the portfolio</h3>
-            
-<div class="code-block">
-  <div class="code-label">CSS — same idea</div>
-  <pre><code>.page-width {
-    width: min(856px, calc(100% - 36px));
-    margin-inline: auto;
-}</code></pre>
-</div>
-
-
-            <p><code class="inline-code">min()</code> chooses the smaller value: either 856px or the available width minus 36px. The 36px gives about 18px space on each side.</p>
-
-            <div class="demo">
-                <p class="demo-title">The viewport can be wide while content stays readable</p>
-                <div class="demo-body">
-                    <div class="inner-width-demo">
-                        <strong>Centered content</strong>
-                        <div class="width-bars">
-                            <div class="width-bar long"></div>
-                            <div class="width-bar medium"></div>
-                            <div class="width-bar short"></div>
-                        </div>
+                    <div class="container-content-demo">
+                        <div class="demo-line long"></div>
+                        <div class="demo-line medium"></div>
+                        <div class="demo-line short"></div>
                     </div>
                 </div>
             </div>
+
+            <div class="class-legend">
+                <span class="legend-item viewport-color">body / viewport = full width</span>
+                <span class="legend-item container-color">.container = centered content</span>
+            </div>
+
+            <h3>The basic version</h3>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}</code></pre>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CSS</th>
+                            <th>What it means</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>width: 80%</code></td>
+                            <td>The container uses 80% of the available width.</td>
+                        </tr>
+                        <tr>
+                            <td><code>max-width: 1000px</code></td>
+                            <td>On a very large screen, the content stops growing at 1000px.</td>
+                        </tr>
+                        <tr>
+                            <td><code>margin: 0 auto</code></td>
+                            <td>The left and right automatic margins center the container.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="rule">
+                <strong>Think of it like this</strong>
+                <code>body</code> is the full browser width. <code>.container</code> is the centered content area inside it.
+            </div>
+
+            <h3>Where do you put the container?</h3>
+
+            <p>
+                Put it around the content that should share the same centered width.
+                You can reuse the same class in the header, hero, sections and footer.
+            </p>
+
+            <div class="code-block">
+                <div class="code-label">HTML</div>
+                <pre><code>&lt;header&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;nav&gt;...&lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;section class=&quot;container&quot;&gt;
+        &lt;h1&gt;Page heading&lt;/h1&gt;
+        &lt;p&gt;Content...&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        Footer content
+    &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+            </div>
+
+            <p>
+                Here, the <code class="inline-code">header</code> itself is still full width.
+                Only the content inside <code class="inline-code">.container</code> is limited to 80%.
+            </p>
+
+            <h3>Full-width background, centered 80% content</h3>
+
+            <p>
+                This is the important pattern when you want a colored section across the whole screen,
+                but the text/cards inside should stay aligned with the rest of the page.
+            </p>
+
+            <div class="full-section-visual">
+                <div class="full-section-label">.full-section = 100% wide background</div>
+
+                <div class="inner-container-visual">
+                    <div class="container-name">.container = 80%</div>
+                    <div class="demo-line long"></div>
+                    <div class="demo-line medium"></div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">HTML</div>
+                <pre><code>&lt;section class=&quot;full-section&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h2&gt;Section heading&lt;/h2&gt;
+        &lt;p&gt;Centered content...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.full-section {
+    width: 100%;
+    padding: 40px 0;
+    background: #dfe5dc;
+}
+
+.container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}</code></pre>
+            </div>
+
+            <div class="rule">
+                <strong>Do not put the 80% width on the colored section.</strong>
+                If you put <code>width: 80%</code> on <code>.full-section</code>, the background will also become narrow.
+                Put the width on the inner <code>.container</code> instead.
+            </div>
+
+            <h3>80% vs. 90% vs. fixed max-width</h3>
+
+            <p>
+                The percentage controls how much empty space you keep at the sides.
+                The <code class="inline-code">max-width</code> prevents long lines on large monitors.
+            </p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Example</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>width: 80%</code></td>
+                            <td>10% empty space on each side.</td>
+                        </tr>
+                        <tr>
+                            <td><code>width: 90%</code></td>
+                            <td>5% empty space on each side.</td>
+                        </tr>
+                        <tr>
+                            <td><code>max-width: 1000px</code></td>
+                            <td>Stops content from becoming too wide.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Mobile</h3>
+
+            <p>
+                You can keep the same container rule on mobile. If 80% feels too narrow,
+                change it to 90% or 92% inside the media query.
+            </p>
+
+            <div class="code-block">
+                <div class="code-label">RESPONSIVE CSS</div>
+                <pre><code>.container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 92%;
+    }
+}</code></pre>
+            </div>
+
+            <p>
+                The container is still centered because <code class="inline-code">margin: 0 auto</code> stays active.
+                Only its percentage width changes.
+            </p>
         </section>
 
-        <section class="guide-section" id="full-background">
+<section class="guide-section" id="full-background">
             <h2>Full-width sections + centered content</h2>
             <p>This is one of the most useful patterns in the design. The outer <code class="inline-code">section</code> owns the background. An inner container owns the content width.</p>
 
@@ -2479,6 +3124,480 @@ padding: 10px 20px 30px 40px;
                 <strong>Use it only when the order must actually change.</strong>
                 If the items only need to move from a row into a column, <code>flex-direction: column</code>
                 or <code>grid-template-columns: 1fr</code> is enough.
+            </div>
+        </section>
+
+
+        <section class="guide-section" id="building-blocks">
+            <h2>Complete page building blocks</h2>
+            <p>
+                These are the main layout patterns needed for this type of multi-page responsive website.
+                The examples are generic, but together they cover the full structure: home page, list pages,
+                article/detail pages and mobile transformations.
+            </p>
+
+            <div class="coverage-grid">
+                <div class="coverage-item"><strong>Navigation</strong><span>desktop links + mobile menu button</span></div>
+                <div class="coverage-item"><strong>Split intro</strong><span>content + visual side by side</span></div>
+                <div class="coverage-item"><strong>CTA button</strong><span>styled link/button</span></div>
+                <div class="coverage-item"><strong>Full-width strip</strong><span>100% background + centered container</span></div>
+                <div class="coverage-item"><strong>Card grid</strong><span>two columns → one column</span></div>
+                <div class="coverage-item"><strong>Media rows</strong><span>visual + flexible copy</span></div>
+                <div class="coverage-item"><strong>Meta row</strong><span>pill + category/date text</span></div>
+                <div class="coverage-item"><strong>Text list</strong><span>stacked entries + separators</span></div>
+                <div class="coverage-item"><strong>Detail page</strong><span>reading column + headings + media</span></div>
+                <div class="coverage-item"><strong>Footer</strong><span>centered links + small text</span></div>
+            </div>
+
+            <h3>Navigation: links on desktop, menu control on mobile</h3>
+
+            <div class="component-demo">
+                <div class="nav-demo-wide">
+                    <div class="nav-demo-brand">FIELD</div>
+                    <div class="nav-demo-links">
+                        <span>Guide</span><span>Notes</span><span>Reference</span>
+                    </div>
+                </div>
+                <div class="nav-demo-small">
+                    <div class="nav-demo-brand">FIELD</div>
+                    <div class="menu-lines"><i></i><i></i><i></i></div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">HTML</div>
+                <pre><code>&lt;header class=&quot;topbar&quot;&gt;
+    &lt;div class=&quot;wide-container&quot;&gt;
+        &lt;a class=&quot;brand&quot; href=&quot;#&quot;&gt;Field&lt;/a&gt;
+
+        &lt;nav class=&quot;desktop-nav&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Guide&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Notes&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Reference&lt;/a&gt;
+        &lt;/nav&gt;
+
+        &lt;button class=&quot;menu-button&quot; type=&quot;button&quot;&gt;
+            Menu
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.wide-container {
+    width: 92%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.topbar .wide-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Split intro: copy + visual</h3>
+            <p>
+                Use Grid when the two sides need controlled proportions. On mobile, switch to one column and
+                optionally move the visual above the copy.
+            </p>
+
+            <div class="component-demo">
+                <div class="intro-demo">
+                    <div class="intro-demo-copy">
+                        <small>INTRO BLOCK</small>
+                        <strong>North / South</strong>
+                        <span>Flexible text column</span>
+                        <b>Action</b>
+                    </div>
+                    <div class="intro-demo-visual"></div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.intro-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 64px 0;
+}
+
+.intro-visual {
+    min-height: 190px;
+}
+
+@media (max-width: 700px) {
+    .intro-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .intro-visual {
+        order: -1;
+    }
+}</code></pre>
+            </div>
+
+            <h3>CTA button</h3>
+
+            <div class="code-block">
+                <div class="code-label">HTML + CSS</div>
+                <pre><code>&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Open sample&lt;/a&gt;
+
+.button {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #5f7668;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}</code></pre>
+            </div>
+
+            <p>
+                Use <code class="inline-code">inline-block</code> for a link styled like a button so padding behaves predictably.
+            </p>
+
+            <h3>Full-width section + centered inner content</h3>
+
+            <div class="component-demo full-band-demo">
+                <div class="band-inner-demo">
+                    <strong>.container</strong>
+                    <span>content stays aligned with the rest of the page</span>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">HTML + CSS</div>
+                <pre><code>&lt;section class=&quot;full-band&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        ...
+    &lt;/div&gt;
+&lt;/section&gt;
+
+.full-band {
+    width: 100%;
+    padding: 36px 0;
+    background: #dfe5dc;
+}
+
+.container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}</code></pre>
+            </div>
+
+            <h3>Section heading row: title on one side, small link on the other</h3>
+
+            <div class="component-demo">
+                <div class="heading-row-demo">
+                    <strong>Section label</strong>
+                    <span>View all</span>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}</code></pre>
+            </div>
+
+            <p>
+                This is a simple one-dimensional row, so Flex is usually the easiest choice.
+            </p>
+
+            <h3>Two cards beside each other</h3>
+
+            <div class="component-demo">
+                <div class="building-card-grid">
+                    <div class="building-card"><strong>Field A</strong><span>Short neutral content block.</span></div>
+                    <div class="building-card"><strong>Field B</strong><span>Another equal-width content block.</span></div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.card {
+    padding: 22px;
+    background: white;
+}
+
+@media (max-width: 700px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Repeated media rows: visual + text</h3>
+
+            <div class="component-demo">
+                <div class="building-media-row">
+                    <div class="building-media-visual"></div>
+                    <div class="building-media-copy">
+                        <strong>Signal / Form</strong>
+                        <div class="building-meta"><b>Label</b><span>Type</span></div>
+                        <p>Flexible copy takes the remaining horizontal space.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">HTML</div>
+                <pre><code>&lt;article class=&quot;media-row&quot;&gt;
+    &lt;div class=&quot;media-visual&quot;&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;media-copy&quot;&gt;
+        &lt;h3&gt;Signal / Form&lt;/h3&gt;
+
+        &lt;div class=&quot;meta-row&quot;&gt;
+            &lt;span class=&quot;pill&quot;&gt;Label&lt;/span&gt;
+            &lt;span&gt;Type&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.media-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid #d4cec3;
+}
+
+.meta-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pill {
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: #5f7668;
+    color: white;
+}
+
+@media (max-width: 700px) {
+    .media-row {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+            </div>
+
+            <h3>Blog-style text list</h3>
+            <p>
+                A text-only listing does not need Grid if every item is naturally full width. Stack articles vertically
+                and use a bottom border as a separator.
+            </p>
+
+            <div class="component-demo">
+                <div class="text-list-demo">
+                    <article>
+                        <strong>Curabitur posuere</strong>
+                        <small>12 Mar · Pattern</small>
+                        <span>Short paragraph used only to show rhythm and spacing.</span>
+                    </article>
+                    <article>
+                        <strong>Integer feugiat</strong>
+                        <small>24 Apr · Notes</small>
+                        <span>Each item sits underneath the previous one.</span>
+                    </article>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.text-list article {
+    padding: 28px 0;
+    border-bottom: 1px solid #d4cec3;
+}
+
+.text-list h2 {
+    margin: 0 0 8px;
+}
+
+.text-list .meta {
+    margin-bottom: 14px;
+}</code></pre>
+            </div>
+
+            <h3>Detail / article page</h3>
+            <p>
+                A detail page is usually easier to read with a narrower text column than a listing page.
+                Use a second container class instead of changing every child width.
+            </p>
+
+            <div class="reading-width-demo">
+                <span>browser</span>
+                <div class="reading-page-demo">
+                    <strong>.reading-width</strong>
+                    <div class="reading-title-line"></div>
+                    <div class="reading-title-line short"></div>
+                    <div class="reading-media-demo"></div>
+                    <div class="reading-text-line"></div>
+                    <div class="reading-text-line medium"></div>
+                    <div class="reading-text-line"></div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">HTML + CSS</div>
+                <pre><code>&lt;main class=&quot;reading-width&quot;&gt;
+    &lt;article&gt;
+        &lt;h1&gt;Article title&lt;/h1&gt;
+
+        &lt;div class=&quot;meta-row&quot;&gt;
+            &lt;span class=&quot;pill&quot;&gt;Label&lt;/span&gt;
+            &lt;span&gt;Category&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;p&gt;Introduction...&lt;/p&gt;
+
+        &lt;img src=&quot;visual.jpg&quot; alt=&quot;&quot;&gt;
+
+        &lt;h2&gt;Subheading&lt;/h2&gt;
+        &lt;p&gt;More text...&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/main&gt;
+
+.reading-width {
+    width: 88%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.reading-width img {
+    width: 100%;
+    height: auto;
+    margin: 28px 0;
+}</code></pre>
+            </div>
+
+            <h3>Responsive large media</h3>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>img {
+    display: block;
+    max-width: 100%;
+}
+
+.article-media {
+    width: 100%;
+    height: auto;
+}</code></pre>
+            </div>
+
+            <p>
+                For content images inside an article, avoid a fixed height unless the design requires a crop.
+                <code class="inline-code">width: 100%</code> + <code class="inline-code">height: auto</code> preserves the image ratio.
+            </p>
+
+            <h3>Footer with centered social links</h3>
+
+            <div class="component-demo">
+                <div class="footer-demo">
+                    <div class="social-demo-row">
+                        <span>F</span><span>I</span><span>X</span><span>in</span>
+                    </div>
+                    <small>Small footer text</small>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-label">CSS</div>
+                <pre><code>.site-footer {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.social-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 18px;
+}</code></pre>
+            </div>
+
+            <h3>What to measure from a mockup</h3>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Be fairly precise with…</th>
+                            <th>You can usually estimate…</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>container width / max-width</td>
+                            <td>tiny 1–3px spacing differences</td>
+                        </tr>
+                        <tr>
+                            <td>column proportions</td>
+                            <td>exact section height if content can define it</td>
+                        </tr>
+                        <tr>
+                            <td>major gap and padding values</td>
+                            <td>minor border or shadow differences</td>
+                        </tr>
+                        <tr>
+                            <td>image aspect ratio / size</td>
+                            <td>small decorative details</td>
+                        </tr>
+                        <tr>
+                            <td>font-size hierarchy</td>
+                            <td>pixel-perfect line breaks</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="rule">
+                <strong>Build the system, not a screenshot.</strong>
+                Match the overall proportions and spacing, but let content and responsive rules determine height wherever possible.
             </div>
         </section>
 

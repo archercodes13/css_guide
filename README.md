@@ -15,3 +15,11 @@ Files:
 - `style.css` — stylesheet separately for studying
 
 Upload `index.html` to a repository root and enable GitHub Pages.
+
+
+## Complete building blocks
+
+The guide now also includes neutral examples for:
+navigation, split intro, CTA, full-width bands, heading rows, card grids,
+media rows, metadata pills, text lists, detail/article layouts,
+responsive media and footer/social layouts.
