@@ -1,31 +1,22 @@
 # Learn CSS — Layout & Responsive Design
 
-A static visual CSS guide made for GitHub Pages.
+A static CSS learning site for GitHub Pages.
 
-## Easiest option
+The examples are intentionally generic:
+- random placeholder copy
+- CSS-only abstract visuals
+- independent colors
+- no original portfolio photos or screenshots
 
-Upload:
-- `index.html`
-- the `assets/` folder
+## Files
 
-The CSS is embedded directly in `index.html`, so the page is already styled even without a separate stylesheet.
-
-## Study files
-
-- `index.html` — complete styled website
-- `learn-css.html` — same complete page under a descriptive filename
-- `style.css` — the CSS separately, useful as a clean reference in DevTools/editor
-- `assets/` — images used by the live layout examples
+- `index.html` — complete styled website with embedded CSS
+- `learn-css.html` — same full page under a descriptive filename
+- `style.css` — the stylesheet separately for studying in DevTools/editor
 
 ## GitHub Pages
 
-1. Create a repository, for example `learn-css`.
-2. Upload the files to the repository root.
-3. Open **Settings → Pages**.
-4. Select **Deploy from a branch**.
-5. Choose `main` and `/ (root)`.
-6. Save.
+Upload the files to a repository root and enable:
+**Settings → Pages → Deploy from a branch → main → / (root)**
 
-GitHub Pages automatically opens `index.html`.
-
-No framework, npm, PHP, database, or build step is required.
+No framework, npm, PHP, database, images, or build step is required.

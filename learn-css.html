@@ -17,14 +17,14 @@
 :root {
     --ink: #171717;
     --muted: #6f6962;
-    --paper: #fbf8f4;
-    --surface: #ffffff;
-    --soft: #f1ebe4;
-    --line: #dfd8cf;
-    --accent: #d95f82;
-    --accent-soft: #f7e2e8;
-    --blue-soft: #e8f4f7;
-    --blue: #2f6775;
+    --paper: #f6f3ee;
+    --surface: #fffdf9;
+    --soft: #ece7df;
+    --line: #d7d0c6;
+    --accent: #6f5a8a;
+    --accent-soft: #eee9f3;
+    --blue-soft: #ece8f2;
+    --blue: #645a74;
     --code-bg: #181818;
     --code-text: #f7f3ed;
     --max-guide: 860px;
@@ -409,18 +409,12 @@ tr:last-child td {
     display: inline-block;
     padding: 8px 14px;
     border-radius: 3px;
-    background: #ff6464;
+    background: #6f5a8a;
     color: white;
     font-size: 14px;
     text-decoration: none;
 }
 
-.portfolio-hero-demo img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-}
 
 /* Cards */
 .cards-demo {
@@ -428,7 +422,7 @@ tr:last-child td {
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
     padding: 22px;
-    background: #eaf5f8;
+    background: #f0ece8;
 }
 
 .mini-card {
@@ -456,12 +450,6 @@ tr:last-child td {
     align-items: start;
 }
 
-.work-demo img {
-    width: 210px;
-    height: 145px;
-    object-fit: cover;
-    border-radius: 5px;
-}
 
 .work-demo h3 {
     margin: -4px 0 8px;
@@ -482,14 +470,14 @@ tr:last-child td {
 .year-demo {
     padding: 1px 9px;
     border-radius: 20px;
-    background: #142850;
+    background: #5b5067;
     color: white;
     font-size: 13px;
     font-weight: 700;
 }
 
 .category-demo {
-    color: #8695a4;
+    color: #7a7169;
     font-size: 14px;
 }
 
@@ -530,14 +518,6 @@ tr:last-child td {
     text-align: center;
 }
 
-.phone-hero img {
-    order: -1;
-    width: 90px;
-    height: 90px;
-    margin: 0 auto;
-    object-fit: cover;
-    border-radius: 50%;
-}
 
 .phone-hero h4 {
     margin: 0;
@@ -558,7 +538,7 @@ tr:last-child td {
 
 .phone-card {
     padding: 12px;
-    background: #eaf5f8;
+    background: #f0ece8;
     font-size: 12px;
 }
 
@@ -806,12 +786,7 @@ tr:last-child td {
         display: block;
     }
 
-    .work-demo img {
-        width: 100%;
-        height: auto;
-        margin-bottom: 14px;
-    }
-
+    
     .semantic-articles {
         grid-template-columns: 1fr;
     }
@@ -913,6 +888,76 @@ tr:last-child td {
     }
 }
 
+
+/* ---------- ABSTRACT DEMO VISUALS ----------
+   These replace any original portfolio photos/screenshots.
+   They are CSS-only so the guide remains visually independent.
+   ------------------------------------------------------- */
+.abstract-portrait {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 32%, #f6e8c8 0 12%, transparent 13%),
+        radial-gradient(circle at 63% 30%, #d5bdd7 0 14%, transparent 15%),
+        linear-gradient(145deg, #756787, #b7a6bf 55%, #e8ddd0);
+    border: 1px solid #c9c0b6;
+}
+
+.abstract-project {
+    width: 210px;
+    height: 145px;
+    border-radius: 7px;
+    border: 1px solid #cfc7bd;
+    background:
+        linear-gradient(90deg, transparent 0 12%, #fffdf9 12% 13%, transparent 13% 28%, #fffdf9 28% 29%, transparent 29%),
+        linear-gradient(#cfc2d8 0 27%, #e9e1db 27% 55%, #a996b2 55% 100%);
+}
+
+.abstract-project.alt {
+    background:
+        linear-gradient(135deg, transparent 0 45%, rgba(255,255,255,.45) 45% 55%, transparent 55%),
+        linear-gradient(90deg, #c3b1cc, #dfd6cf);
+}
+
+.abstract-visual {
+    min-height: 120px;
+    border-radius: 8px;
+    border: 1px solid #cfc7bd;
+    background: linear-gradient(135deg, #d9cedf, #ebe4dc);
+}
+
+.phone-hero .abstract-portrait {
+    order: -1;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+}
+
+.portfolio-hero-demo .abstract-portrait {
+    width: 150px;
+    height: 150px;
+}
+
+.work-demo .abstract-project {
+    width: 210px;
+    height: 145px;
+}
+
+@media (max-width: 700px) {
+    .portfolio-hero-demo .abstract-portrait {
+        order: -1;
+        width: 118px;
+        height: 118px;
+    }
+
+    .work-demo .abstract-project {
+        width: 100%;
+        height: 180px;
+        margin-bottom: 14px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -960,7 +1005,7 @@ tr:last-child td {
         <a href="#full-background">Full-width background</a>
         <a href="#flex-grid">Flex vs Grid</a>
         <a href="#flex-grid-live">Flex vs Grid live</a>
-        <a href="#hero">Text left + image right</a>
+        <a href="#hero">Lorem left + image right</a>
         <a href="#cards">Two cards</a>
         <a href="#work-row">Image + text row</a>
         <a href="#header">Header / navigation</a>
@@ -1051,9 +1096,9 @@ tr:last-child td {
                     <thead><tr><th>Element</th><th>Use it when…</th><th>Example</th></tr></thead>
                     <tbody>
                         <tr><td><code>header</code></td><td>It is the top/site header.</td><td>Navigation bar</td></tr>
-                        <tr><td><code>nav</code></td><td>It contains navigation links.</td><td>Archive / Notes / About</td></tr>
+                        <tr><td><code>nav</code></td><td>It contains navigation links.</td><td>Index / Log / Info</td></tr>
                         <tr><td><code>main</code></td><td>It wraps the unique content of the page.</td><td>Everything between header and footer</td></tr>
-                        <tr><td><code>section</code></td><td>It groups a topic/area and usually has a heading.</td><td>Hero, Selected Notes, Visual Archive</td></tr>
+                        <tr><td><code>section</code></td><td>It groups a topic/area and usually has a heading.</td><td>Hero, Small Entries, Sample Collection</td></tr>
                         <tr><td><code>article</code></td><td>The item could make sense on its own.</td><td>One blog card or one work/project</td></tr>
                         <tr><td><code>div</code></td><td>You only need a layout/styling wrapper.</td><td><code>.page-width</code>, <code>.work-copy</code>, metadata wrapper</td></tr>
                     </tbody>
@@ -1099,11 +1144,11 @@ tr:last-child td {
   <div class="code-label">HTML</div>
   <pre><code>&lt;section class=&quot;hero page-width&quot;&gt;
     &lt;div class=&quot;hero-copy&quot;&gt;
-        &lt;h1&gt;Aster Studio&lt;/h1&gt;
+        &lt;h1&gt;Mira Field&lt;/h1&gt;
         &lt;p&gt;...&lt;/p&gt;
     &lt;/div&gt;
 
-    &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.png&quot; alt=&quot;Portrait&quot;&gt;
+    &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.png&quot; alt=&quot;Visual&quot;&gt;
 &lt;/section&gt;</code></pre>
 </div>
 
@@ -1210,7 +1255,7 @@ tr:last-child td {
   <div class="code-label">HTML</div>
   <pre><code>&lt;section class=&quot;recent-posts&quot;&gt;
     &lt;div class=&quot;page-width&quot;&gt;
-        &lt;h2&gt;Selected Notes&lt;/h2&gt;
+        &lt;h2&gt;Small Entries&lt;/h2&gt;
         ...
     &lt;/div&gt;
 &lt;/section&gt;</code></pre>
@@ -1221,7 +1266,7 @@ tr:last-child td {
 <div class="code-block">
   <div class="code-label">CSS</div>
   <pre><code>.recent-posts {
-    background: #edf7fa;
+    background: #eee9f6;
     padding: 20px 0 32px;
 }
 
@@ -1248,7 +1293,7 @@ tr:last-child td {
                     <thead><tr><th>Situation</th><th>Prefer</th><th>Why</th></tr></thead>
                     <tbody>
                         <tr><td>Navigation, metadata, icons, small row</td><td>Flex</td><td>You mainly care about one direction.</td></tr>
-                        <tr><td>Text + image with controlled columns</td><td>Grid</td><td>You can explicitly define both columns.</td></tr>
+                        <tr><td>Lorem + image with controlled columns</td><td>Grid</td><td>You can explicitly define both columns.</td></tr>
                         <tr><td>Two equal cards</td><td>Grid</td><td><code>repeat(2, 1fr)</code> gives equal columns.</td></tr>
                         <tr><td>Image 246px + text uses the rest</td><td>Grid</td><td><code>246px 1fr</code> describes it directly.</td></tr>
                         <tr><td>Center something horizontally + vertically</td><td>Flex/Grid</td><td><code>justify-content</code> + <code>align-items</code>, or <code>place-items</code>.</td></tr>
@@ -1293,10 +1338,10 @@ tr:last-child td {
                     <h3>Good for a row that can wrap</h3>
 
                     <div class="flex-box-demo">
-                        <div class="sample-box">Alpha</div>
-                        <div class="sample-box">Beta</div>
-                        <div class="sample-box">Gamma</div>
-                        <div class="sample-box">Delta</div>
+                        <div class="sample-box">Luma</div>
+                        <div class="sample-box">Orin</div>
+                        <div class="sample-box">Vela</div>
+                        <div class="sample-box">Neris</div>
                     </div>
 
                     <p class="small-note">
@@ -1309,10 +1354,10 @@ tr:last-child td {
                     <h3>Good for controlled columns</h3>
 
                     <div class="grid-box-demo">
-                        <div class="sample-box">Alpha</div>
-                        <div class="sample-box">Beta</div>
-                        <div class="sample-box">Gamma</div>
-                        <div class="sample-box">Delta</div>
+                        <div class="sample-box">Luma</div>
+                        <div class="sample-box">Orin</div>
+                        <div class="sample-box">Vela</div>
+                        <div class="sample-box">Neris</div>
                     </div>
 
                     <p class="small-note">
@@ -1366,7 +1411,7 @@ tr:last-child td {
         </section>
 
 <section class="guide-section" id="hero">
-            <h2>Text on the left, image on the right</h2>
+            <h2>Lorem on the left, image on the right</h2>
             <p>The parent controls the two-column layout. The image class controls the image dimensions. The text wrapper mainly gives you a clean selector for its heading and paragraph.</p>
 
             <div class="demo">
@@ -1374,11 +1419,11 @@ tr:last-child td {
                 <div class="demo-body">
                     <div class="portfolio-hero-demo">
                         <div>
-                            <h3>Aster Studio<br>Dolor Sit Amet</h3>
-                            <p>Text fills the flexible column. The image keeps a predictable size.</p>
-                            <a class="demo-button" href="#hero">Explore</a>
+                            <h3>Mira Field<br>Quisque Porta</h3>
+                            <p>Lorem fills the flexible column. The image keeps a predictable size.</p>
+                            <a class="demo-button" href="#hero">View sample</a>
                         </div>
-                        <img src="assets/avatar.png" alt="Abstract portrait example">
+                        <div class="abstract-portrait" aria-label="Abstract visual placeholder"></div>
                     </div>
                 </div>
             </div>
@@ -1388,19 +1433,19 @@ tr:last-child td {
   <div class="code-label">HTML</div>
   <pre><code>&lt;section class=&quot;hero page-width&quot;&gt;
     &lt;div class=&quot;hero-copy&quot;&gt;
-        &lt;h1&gt;Aster Studio&lt;/h1&gt;
+        &lt;h1&gt;Mira Field&lt;/h1&gt;
         &lt;p&gt;...&lt;/p&gt;
-        &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Explore&lt;/a&gt;
+        &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;View sample&lt;/a&gt;
     &lt;/div&gt;
 
-    &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.png&quot; alt=&quot;Portrait&quot;&gt;
+    &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.png&quot; alt=&quot;Visual&quot;&gt;
 &lt;/section&gt;</code></pre>
 </div>
 
 
             
 <div class="code-block">
-  <div class="code-label">Desktop CSS</div>
+  <div class="code-label">Wide layout CSS</div>
   <pre><code>.hero {
     display: grid;
     grid-template-columns: 1fr 243px;
@@ -1452,12 +1497,12 @@ tr:last-child td {
                 <p class="demo-title">Two equal columns</p>
                 <div class="cards-demo">
                     <article class="mini-card">
-                        <h4>Lorem Ipsum</h4>
-                        <p>Card content. The grid parent controls where this card sits.</p>
+                        <h4>Nunc Vitae</h4>
+                        <p>Each item fills one defined grid column.</p>
                     </article>
                     <article class="mini-card">
-                        <h4>Dolor Sit Amet</h4>
-                        <p>Both cards receive exactly one fraction of the available width.</p>
+                        <h4>Quisque Porta</h4>
+                        <p>Both items share the available row equally.</p>
                     </article>
                 </div>
             </div>
@@ -1474,7 +1519,7 @@ tr:last-child td {
 
             
 <div class="code-block">
-  <div class="code-label">Desktop CSS</div>
+  <div class="code-label">Wide layout CSS</div>
   <pre><code>.post-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1516,14 +1561,14 @@ tr:last-child td {
                 <p class="demo-title">Live work row</p>
                 <div class="demo-body">
                     <article class="work-demo">
-                        <img src="assets/fs1.png" alt="Interface project example">
+                        <div class="abstract-project" aria-label="Abstract project placeholder"></div>
                         <div>
-                            <h3>Lorem Archivepace</h3>
+                            <h3>Lorem Indexpace</h3>
                             <div class="meta-demo">
                                 <span class="year-demo">2026</span>
-                                <span class="category-demo">Interface</span>
+                                <span class="category-demo">Prototype</span>
                             </div>
-                            <p>The image has a fixed desktop box. The text column uses the rest of the row.</p>
+                            <p>The visual block keeps a fixed width while the copy uses the remaining space.</p>
                         </div>
                     </article>
                 </div>
@@ -1533,17 +1578,17 @@ tr:last-child td {
 <div class="code-block">
   <div class="code-label">HTML</div>
   <pre><code>&lt;article class=&quot;work-row&quot;&gt;
-    &lt;img src=&quot;project.jpg&quot; alt=&quot;Project&quot;&gt;
+    &lt;img src=&quot;project.jpg&quot; alt=&quot;Module&quot;&gt;
 
     &lt;div class=&quot;work-copy&quot;&gt;
-        &lt;h3&gt;Lorem Archivepace&lt;/h3&gt;
+        &lt;h3&gt;Lorem Indexpace&lt;/h3&gt;
 
         &lt;div class=&quot;work-meta&quot;&gt;
             &lt;span class=&quot;year&quot;&gt;2026&lt;/span&gt;
-            &lt;span class=&quot;category&quot;&gt;Interface&lt;/span&gt;
+            &lt;span class=&quot;category&quot;&gt;Prototype&lt;/span&gt;
         &lt;/div&gt;
 
-        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+        &lt;p&gt;Nunc vitae arcu sed neque varius posuere.&lt;/p&gt;
     &lt;/div&gt;
 &lt;/article&gt;</code></pre>
 </div>
@@ -1551,7 +1596,7 @@ tr:last-child td {
 
             
 <div class="code-block">
-  <div class="code-label">Desktop CSS</div>
+  <div class="code-label">Wide layout CSS</div>
   <pre><code>.work-row {
     display: grid;
     grid-template-columns: 246px 1fr;
@@ -1606,9 +1651,9 @@ tr:last-child td {
   <pre><code>&lt;header class=&quot;site-header&quot;&gt;
     &lt;div class=&quot;header-inner&quot;&gt;
         &lt;nav class=&quot;desktop-nav&quot;&gt;
-            &lt;a href=&quot;#&quot;&gt;Archive&lt;/a&gt;
-            &lt;a href=&quot;#&quot;&gt;Notes&lt;/a&gt;
-            &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Index&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Log&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Info&lt;/a&gt;
         &lt;/nav&gt;
 
         &lt;button class=&quot;menu-button&quot;&gt;Menu&lt;/button&gt;
@@ -1619,7 +1664,7 @@ tr:last-child td {
 
             
 <div class="code-block">
-  <div class="code-label">Desktop CSS</div>
+  <div class="code-label">Wide layout CSS</div>
   <pre><code>.header-inner {
     width: 90%;
     max-width: 1040px;
@@ -1749,7 +1794,7 @@ padding: 10px 20px 30px 40px;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    color: #21243d;
+    color: #292625;
 }
 
 .hero-copy h1 {
@@ -1759,7 +1804,7 @@ padding: 10px 20px 30px 40px;
 }
 
 .category {
-    color: #8695a4;
+    color: #7a7169;
     font-size: 20px;
 }</code></pre>
 </div>
@@ -1772,7 +1817,7 @@ padding: 10px 20px 30px 40px;
     display: inline-block;
     padding: 10px 20px;
     color: white;
-    background: #ff6464;
+    background: #6f5a8a;
     border-radius: 2px;
     text-decoration: none;
 }</code></pre>
@@ -1818,29 +1863,29 @@ padding: 10px 20px 30px 40px;
         </section>
 
         <section class="guide-section" id="responsive">
-            <h2>How to organize responsive CSS</h2>
+            <h2>Responsive layout workflow</h2>
             <p>Write the desktop/base layout first. Put the breakpoint near the bottom of the stylesheet and override only the properties that actually change.</p>
 
             <div class="compare">
                 <div class="compare-panel">
-                    <h4>Desktop</h4>
+                    <h4>Wide layout</h4>
                     <div class="portfolio-hero-demo">
                         <div>
-                            <h3 style="font-size:20px">Text</h3>
-                            <p>Left side</p>
+                            <h3 style="font-size:20px">Lorem</h3>
+                            <p>Primary block</p>
                         </div>
-                        <img src="assets/avatar.png" alt="" style="width:90px;height:90px">
+                        <div class="abstract-portrait" aria-label="Abstract visual placeholder"></div>
                     </div>
                 </div>
                 <div class="compare-panel">
-                    <h4>Mobile idea</h4>
+                    <h4>Narrow layout</h4>
                     <div class="phone-frame">
                         <div class="phone-hero">
                             <div>
-                                <h4>Text</h4>
-                                <p>Centered below image</p>
+                                <h4>Lorem</h4>
+                                <p>Secondary block below visual</p>
                             </div>
-                            <img src="assets/avatar.png" alt="">
+                            <div class="abstract-portrait" aria-label="Abstract visual placeholder"></div>
                         </div>
                     </div>
                 </div>
@@ -1848,7 +1893,7 @@ padding: 10px 20px 30px 40px;
 
             
 <div class="code-block">
-  <div class="code-label">The pattern</div>
+  <div class="code-label">Responsive override example</div>
   <pre><code>/* BASE / DESKTOP */
 .post-grid {
     display: grid;
@@ -1869,14 +1914,14 @@ padding: 10px 20px 30px 40px;
             <h3>Typical desktop → mobile conversions</h3>
             <div class="table-wrap">
                 <table>
-                    <thead><tr><th>Desktop</th><th>Mobile</th><th>Reason</th></tr></thead>
+                    <thead><tr><th>Wide layout</th><th>Mobile</th><th>Reason</th></tr></thead>
                     <tbody>
                         <tr><td><code>repeat(2, 1fr)</code></td><td><code>1fr</code></td><td>Two cards become one per row.</td></tr>
                         <tr><td><code>246px 1fr</code></td><td><code>display: block</code></td><td>Image goes above text.</td></tr>
                         <tr><td>Horizontal hero</td><td><code>flex-direction: column</code></td><td>Content stacks vertically.</td></tr>
                         <tr><td>Large image</td><td>Smaller width/height</td><td>Fits a narrow screen.</td></tr>
                         <tr><td>44px heading</td><td>30–32px heading</td><td>Prevents awkward wrapping.</td></tr>
-                        <tr><td>Desktop nav shown</td><td><code>display: none</code></td><td>Hide crowded navigation.</td></tr>
+                        <tr><td>Wide layout nav shown</td><td><code>display: none</code></td><td>Hide crowded navigation.</td></tr>
                         <tr><td>Mobile control hidden</td><td><code>display: block</code></td><td>Show mobile replacement.</td></tr>
                     </tbody>
                 </table>
@@ -2054,7 +2099,7 @@ padding: 10px 20px 30px 40px;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Portfolio&lt;/title&gt;
+    &lt;title&gt;Layout Demo&lt;/title&gt;
     &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -2062,9 +2107,9 @@ padding: 10px 20px 30px 40px;
 &lt;header&gt;
     &lt;div class=&quot;header-inner&quot;&gt;
         &lt;nav&gt;
-            &lt;a href=&quot;#&quot;&gt;Archive&lt;/a&gt;
-            &lt;a href=&quot;#&quot;&gt;Notes&lt;/a&gt;
-            &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Index&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Log&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Info&lt;/a&gt;
         &lt;/nav&gt;
     &lt;/div&gt;
 &lt;/header&gt;
@@ -2072,17 +2117,17 @@ padding: 10px 20px 30px 40px;
 &lt;main&gt;
     &lt;section class=&quot;hero container&quot;&gt;
         &lt;div class=&quot;hero-copy&quot;&gt;
-            &lt;h1&gt;Aster Studio&lt;/h1&gt;
-            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
-            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;Explore&lt;/a&gt;
+            &lt;h1&gt;Mira Field&lt;/h1&gt;
+            &lt;p&gt;Nunc vitae arcu sed neque varius posuere.&lt;/p&gt;
+            &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;View sample&lt;/a&gt;
         &lt;/div&gt;
 
-        &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.jpg&quot; alt=&quot;Portrait&quot;&gt;
+        &lt;img class=&quot;hero-photo&quot; src=&quot;avatar.jpg&quot; alt=&quot;Visual&quot;&gt;
     &lt;/section&gt;
 
     &lt;section class=&quot;colored-section&quot;&gt;
         &lt;div class=&quot;container&quot;&gt;
-            &lt;h2&gt;Selected Notes&lt;/h2&gt;
+            &lt;h2&gt;Small Entries&lt;/h2&gt;
 
             &lt;div class=&quot;cards&quot;&gt;
                 &lt;article class=&quot;card&quot;&gt;Lorem ipsum&lt;/article&gt;
@@ -2092,14 +2137,14 @@ padding: 10px 20px 30px 40px;
     &lt;/section&gt;
 
     &lt;section class=&quot;container&quot;&gt;
-        &lt;h2&gt;Visual Archive&lt;/h2&gt;
+        &lt;h2&gt;Sample Collection&lt;/h2&gt;
 
         &lt;article class=&quot;work&quot;&gt;
-            &lt;img src=&quot;project.jpg&quot; alt=&quot;Project&quot;&gt;
+            &lt;img src=&quot;project.jpg&quot; alt=&quot;Module&quot;&gt;
 
             &lt;div&gt;
-                &lt;h3&gt;Amet Consectetur&lt;/h3&gt;
-                &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+                &lt;h3&gt;Orbis Module&lt;/h3&gt;
+                &lt;p&gt;Nunc vitae arcu sed neque varius posuere.&lt;/p&gt;
             &lt;/div&gt;
         &lt;/article&gt;
     &lt;/section&gt;
@@ -2174,14 +2219,14 @@ nav {
     display: inline-block;
     padding: 10px 20px;
     color: white;
-    background: #ff6464;
+    background: #6f5a8a;
     text-decoration: none;
 }
 
 /* FULL-WIDTH BACKGROUND + TWO CARDS */
 .colored-section {
     padding: 30px 0;
-    background: #edf7fa;
+    background: #eee9f6;
 }
 
 .cards {
